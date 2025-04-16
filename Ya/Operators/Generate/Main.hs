@@ -29,8 +29,9 @@ print = this `he'ho'he` (shaft `hv` by Passed) `ho` this `ho_'yokl` Forth `ha` W
 type Arity = Nonempty List Unit
 
 arguments = is @(Nonempty List _) ["#", "##", "###"]
+-- operators = is @(Nonempty List _) [".", "..", "...", "....", "....."]
 
-quantifier letter current = current
+quantified letter current = current
  `yokl` Forth `ha` Run `ha` Only `ha` letter
  `lu__` push `hv` Unit `ho` that `hv` current
 
@@ -40,12 +41,17 @@ variable = Glyph `ha` Letter `ha` Lower
 
 rename = (top `ho` that `lo` variable) `ho'hd` is
 
--- 1. Use a Scrolling Tree instead of a Scrolling List
--- 2. Put a proper quantifier name in each variable slot
+-- TODO: Use a Scrolling Tree instead of a Scrolling List
+-- TODO: Put a proper quantified name in each variable slot
 positions x = is @Arity x
  `yo` Glyph `ha` Letter `ha` Lower `ha` I
  `yi` to @(Scrolling List)
  `kyo` unwrap @AR @(Unit `L` Scrolling List `WR` _)
 
-main = arguments `yo` positions `ho` to @(Nonempty List)
+-- Here is the idea how to add another simple covariant functor mapping:
+-- 1. Add current focused tree to a reverse list of passed ones
+-- 2. Add a new positioned arrangement as a new focused tree
+
+-- TODO: Define traversable instance for Scrolling Tree
+main = arguments `yo` positions
  `yokl'yokl` Forth `ha` Forth `ha` World `ha` print `ha` to @(Scrolling Tree)
