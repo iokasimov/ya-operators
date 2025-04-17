@@ -41,6 +41,20 @@ variable = Glyph `ha` Letter `ha` Lower
 
 rename = (top `ho` that `lo` variable) `ho'hd` is
 
+-- impact' :: Scrolling List Unit `AR_`  State (Scrolling Tree Unit) ((Only `P'T'I'TT'I` Shafted List `T'TT'I` Tree) Unit)
+-- impact' x = enter @(State `WR` Scrolling Tree Unit)
+ -- `yuk__` State `ho` New `hv___` Event `ha` push `ha` stacked `hv` x
+  -- `ha__` Scope `hv` it @(Scrolling Tree Unit)
+ -- `ho_'he` Scope `hv` at @(Stacked Only Tree List Unit)
+ -- `ho_'he'he` Scope `hv` it @(List ((Only `P'T'I'TT'I` Shafted List `T'TT'I` Tree) Unit))
+
+-- stacked :: Scrolling List Unit `AR_______` (Only `P'T'I'TT'I` Shafted List `T'TT'I` Tree) Unit
+-- stacked (U_T_I_TT_I (These _ xs)) = U_T_I_TT_I (Only Unit `lu` (xs `yo` intro @Tree @Unit `yi` wrap @AR @((Shafted List `T'TT'I` Tree) Unit)))
+
+-- impact :: Scrolling List Unit `AR_`  Scrolling Tree Unit
+-- impact x = let init = is @(Nonempty List Unit) [Unit] `yi` to @(Scrolling List) `ho` to @(Scrolling Tree) in
+ -- (impact' x `yuk` New `ha` shift `hv` by (Level `ha`Lift)) `he'he'hv` init `yi` that
+
 -- TODO: Use a Scrolling Tree instead of a Scrolling List
 -- TODO: Put a proper quantified name in each variable slot
 positions x = is @Arity x
@@ -48,10 +62,10 @@ positions x = is @Arity x
  `yi` to @(Scrolling List)
  `kyo` unwrap @AR @(Unit `L` Scrolling List `WR` _)
 
--- Here is the idea how to add another simple covariant functor mapping:
--- 1. Add current focused tree to a reverse list of passed ones
--- 2. Add a new positioned arrangement as a new focused tree
+-- I think I should reimplement Scrolling Tree, so we have a Scrolling List as descendants
+
+-- TODO: Okay, I have tried to use Scrolling Tree, it's very uncomfortable. I'll try to use regular Tree instead
 
 -- TODO: Define traversable instance for Scrolling Tree
-main = arguments `yo` positions
+main = (arguments `yo` positions)
  `yokl'yokl` Forth `ha` Forth `ha` World `ha` print `ha` to @(Scrolling Tree)
