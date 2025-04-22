@@ -19,6 +19,8 @@ type Namespace = (Parametric `L` List) Unit `P` (Positioned `L` List) Unit
 
 type Arity = Nonempty List Unit
 
+type Name = Nonempty List Latin
+
 arguments = is @(Nonempty List _) ["#", "##", "###"]
 operators = is @(Nonempty List _) [".", "..", "...", "....", "....."]
 
@@ -40,17 +42,17 @@ rename :: Scrolling List Latin `AR` Scrolling List Latin
 rename x = focus `ho` that `hv` x `hv` by (Only `ha` A)
 
 target :: Scrolling List Latin `AR__` Tree Latin
-target x = Construct (Node (by T) (x `yi` rename `yo` intro @Tree `ho` unwrap @AR `yi` to @(Nonempty List) `ho` to @List))
+target x = Construct (Node (by T) (x `yi` rename `yo` intro @Tree `ho'he` is `yi` to @(Nonempty List) `ho` to @List))
 
 print_subtree subtree = Empty @List `hu` enter @World
  `la` Same `hu` (subtree `yokl` Forth `ha` World `ha` print_tree) `ho'yu` Unit
  `li` unwrap subtree
 
 print_tree = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Space `hv` Unit
- `lo__'yp` Some `hu_` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Opened `hv` Round
- `lo__'yp` output `ha` Glyph `ha` Letter `ha` Lower `ha` this `ha` top
- `lo__'yp` sub `ho` this `ho` print_subtree
- `lo__'yp` Some `hu_` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Closed `hv` Round
+ `lo__'yp` Some `hu_` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Opened `hv` Round `ho_` Await
+ `lo__'yp` output `ha` Glyph `ha` Letter `ha` Lower `ha` this `ha` top `ho_` Await
+ `lo__'yp` sub `ho` this `ho` print_subtree `ho_` Await
+ `lo__'yp` Some `hu_` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Closed `hv` Round `ho_` Await
 
 main = arguments `yo` positions
  `yokl'yokl` Forth `ha` Forth `ha` World `ha` print_tree `ha` target
