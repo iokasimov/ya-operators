@@ -46,7 +46,7 @@ positions x = is @Arity x `yi` to @(Scrolling List)
  -- `kyo` unwrap @AR @(Unit `L` No List `WR` _)
 
 operators :: List `T'I` Scrolling List Unit
-operators = to @List `hv` arguments `yok` Cascade `ha` positions
+operators = arguments `yi` to @List `yok` Cascade `ha` positions
 
 atop (These x y) = Nonempty @List `ha` Item x `ha` Next `ha` Item y `ha` Last
 
@@ -58,15 +58,15 @@ inject :: Scrolling List `T'I` Tree Unit `AR___` Tree Latin `AR__` List `T'I` Tr
 inject x = to @List `ha` to @(Nonempty List) `ha_` focus `ho` that `hv` (x `yo'yo` I) `ha_` Only @(Tree Latin)
 
 -- TODO: stateful variable length
-layer x = enter @(State `T'I` Tree Latin)
- `yuk_` Old `ha` State `hv__` Event `hv_` get @(Tree Latin)
- `yok_` New `ha` State `ha__` Event `ha_` put `ha` inject x `ho_'ha` Scope `hv` sub @Tree
- `yuk_` New `ha` State `hv__` Event `hv_` put `hv` by T `ha_` Scope `hv` top @Tree
+layer x = enter @(State `WR_` Namespace `P` Tree Latin)
+ `yuk__` Old `ha` State `hv___` Event `hv_` get @(Tree Latin)`ha__` Scope `hv` at @(Tree Latin)
+ `yok__` New `ha` State `ha___` Event `ha_` put `ha` inject x `ho__'ha` Scope `hv` at @(Tree Latin) `ho_` Scope `hv` sub @Tree
+ `yuk__` New `ha` State `hv___` Event `hv_` put `hv` by T `ha__` Scope `hv` at @(Tree Latin) `ho_` Scope `hv` top @Tree
 
 main = combine operators
  `yokl` Forth `ha` World
  `ha__'yuk` World `ha` output `ha` Caret `ha` Newline `hv` Unit
  `ha__` is @(Nonempty List `T'I` Scrolling List Unit)
   `ho_'yokl` Forth `ha` New `ha` layer `ha'yo` intro @Tree
-  `ho_'he'he'hv` intro @Tree `hv` by A
-  `ho_` print `ha` that @(Tree Latin)
+  `ho_'he'he'hv` (Labeled `ha` Empty @List `lo` Labeled `ha` Empty @List `lo` intro @Tree `ha` A) Unit
+  `ho_` print `ha` that @(Tree Latin) `ha` that
