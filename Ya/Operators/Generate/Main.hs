@@ -57,21 +57,21 @@ operators = to @List `hv` arguments `yok` Cascade `ha` positions
 atop (These x y) = Nonempty @List `ha` Item x `ha` Next `ha` Item y `ha` Last
 
 -- Since traversables uses applicative instance inside - can I use Cross label here?
--- combined :: List (List (Scrolling List Latin))
+-- combine :: List (List (Scrolling List Latin))
 combine operators = operators `lu` Cross operators `yp'yo` by `ha` atop
 
-inject layer = to @List `ha` to @(Nonempty List) `ha_` focus `ho` that `hv` layer `ha_` Only
+inject x = to @List `ha` to @(Nonempty List) `ha_` focus `ho` that `hv` x `ha_` Only
 
 -- TODO: stateful variable length
-new layer = enter @(State `T'I` Tree Latin)
+layer x = enter @(State `T'I` Tree Latin)
  `yuk_` Old `ha` State `hv__` Event `hv_` get @(Tree Latin)
- `yok_` New `ha` State `ha__` Event `ha_` put `ha` inject layer `ho_'ha` Scope `hv` sub @Tree
+ `yok_` New `ha` State `ha__` Event `ha_` put `ha` inject x `ho_'ha` Scope `hv` sub @Tree
  `yuk_` New `ha` State `hv__` Event `hv_` put `hv` by T `ha_` Scope `hv` top @Tree
-
-lay layers = (layers `yokl` Forth `ha` New `ha` new `ha'yo` intro @Tree)
- `he'he'hv_` intro @Tree `hv` by A `yi` that
 
 main = combine operators
  `yokl` Forth `ha` World
  `ha__'yuk` World `ha` output `ha` Caret `ha` Newline `hv` Unit
- `ha__` print `ha` lay
+ `ha__` is @(Nonempty List `T'I` Scrolling List Latin)
+  `ho_'yokl` Forth `ha` New `ha` layer `ha'yo` intro @Tree
+  `ho_'he'he'hv` intro @Tree `hv` by A
+  `ho_` print `ha` that @(Tree Latin)
