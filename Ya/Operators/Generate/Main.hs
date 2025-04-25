@@ -10,20 +10,10 @@ import Ya.Console
 
 -- rename = (top `ho` that `lo` variable) `ho'hd` is
 
-data Variable = Parametric | Positioned
-
-type Namespace = (Parametric `L` List) Unit `P` (Positioned `L` List) Unit
-
 type Arity = Nonempty List Unit
-
-type Name = Nonempty List Latin
 
 arguments = is @(Nonempty List _) ["#", "##", "###"]
 -- operators = is @(Nonempty List _) [".", "..", "..."] --, "....", "....."]
-
-quantified letter current = current
- `yokl` Forth `ha` Run `ha` Only `ha` letter
- `lu__` push `hv` Unit `ho` that `hv` current
 
 -- I think I should reimplement Scrolling Tree, so we have a Scrolling List as descendants
 
@@ -33,7 +23,7 @@ print_subtree subtree = Empty @List `hu` enter @World
 
 print = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Space `hv` Unit
  `lo__'yp` Some `hu_` Await `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Opened `hv` Round
- `lo__'yp` Await `ha` output `ha` Glyph `ha` Letter `ha` Lower `ha` this `ha` top
+ `lo__'yp` Await `ha_'yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower `ha_` this `ha` top
  `lo__'yp` Await `ha` print_subtree  `ha` this `ha` sub
  `lo__'yp` Some `hu_` Await `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Closed `hv` Round
 
@@ -54,19 +44,32 @@ atop (These x y) = Nonempty @List `ha` Item x `ha` Next `ha` Item y `ha` Last
 combine :: List `T'I` Scrolling List Unit `AR___` List `T'I` Nonempty List (Scrolling List Unit)
 combine operators = operators `lu` Cross operators `yp'yo` by `ha` atop
 
-inject :: Scrolling List `T'I` Tree Unit `AR___` Tree Latin `AR__` List `T'I` Tree Latin
-inject x = to @List `ha` to @(Nonempty List) `ha_` focus `ho` that `hv` (x `yo'yo` I) `ha_` Only @(Tree Latin)
+inject :: Scrolling List Unit `AR___` Tree Name `AR__` List `T'I` Tree Name
+inject x = to @List `ha` to @(Nonempty List)
+ `ha_` focus `ho` that `hv` (x `yo` I `ho` intro @(Nonempty List) `ho` intro @Tree)
+ `ha_` Only @(Tree Name)
 
--- TODO: stateful variable length
-layer x = enter @(State `WR_` Namespace `P` Tree Latin)
- `yuk__` Old `ha` State `hv___` Event `hv_` get @(Tree Latin)`ha__` Scope `hv` at @(Tree Latin)
- `yok__` New `ha` State `ha___` Event `ha_` put `ha` inject x `ho__'ha` Scope `hv` at @(Tree Latin) `ho_` Scope `hv` sub @Tree
- `yuk__` New `ha` State `hv___` Event `hv_` put `hv` by T `ha__` Scope `hv` at @(Tree Latin) `ho_` Scope `hv` top @Tree
+data Variable = Parametric | Positioned
+
+type Namespace = (Parametric `L` List) Unit `P` (Positioned `L` List) Unit
+
+type Name = Nonempty List Latin
+
+quantified letter current = current
+ `yokl` Forth `ha` Run `ha` Only `ha` letter
+ `lu__` push `hv` Unit `ho` that `hv` current
+
+layer x = enter @(State `WR_` Namespace `P` Tree Name)
+ `yuk__` Old `ha` State `hv___` Event `hv_` get @(Tree Name)`ha__` Scope `hv` at @(Tree Name)
+ `yok__` New `ha` State `ha___` Event `ha_` put `ha` inject x `ho__'ha` Scope `hv` at @(Tree Name) `ho_` Scope `hv` sub @Tree
+ `yuk__` New `ha` State `hv___` Event `hv_` put `hv` [by T] `ha__` Scope `hv` at @(Tree Name) `ho_` Scope `hv` top @Tree
+
+initial = wrap [Unit] `lu` wrap [Unit] `lu` intro @Tree `hv` [by A]
 
 main = combine operators
  `yokl` Forth `ha` World
  `ha__'yuk` World `ha` output `ha` Caret `ha` Newline `hv` Unit
  `ha__` is @(Nonempty List `T'I` Scrolling List Unit)
-  `ho_'yokl` Forth `ha` New `ha` layer `ha'yo` intro @Tree
-  `ho_'he'he'hv` (Labeled `ha` Empty @List `lo` Labeled `ha` Empty @List `lo` intro @Tree `ha` A) Unit
-  `ho_` print `ha` that @(Tree Latin) `ha` that
+  `ho_'yokl` Forth `ha` New `ha` layer
+  `ho_'he'he'hv`  initial
+  `ho_` print `ha` that @(Tree Name) `ha` that
