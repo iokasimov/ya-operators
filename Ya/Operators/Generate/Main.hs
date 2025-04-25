@@ -5,9 +5,6 @@ import Ya.ASCII
 import Ya.World
 import Ya.Console
 
--- TODO: I hope with this code I would be able to generate operators like these
--- `yokl'yokl'yokl` Forth `ha` Forth `ha` Forth `ha` World `ho` output
-
 -- variable = None `hu` by I `la` Some `hu` by T
  -- `ha__` sub `ho` this @(List `WR` Tree Latin)
 
@@ -22,21 +19,13 @@ type Arity = Nonempty List Unit
 type Name = Nonempty List Latin
 
 arguments = is @(Nonempty List _) ["#", "##", "###"]
-operators = is @(Nonempty List _) [".", "..", "...", "....", "....."]
+-- operators = is @(Nonempty List _) [".", "..", "..."] --, "....", "....."]
 
 quantified letter current = current
  `yokl` Forth `ha` Run `ha` Only `ha` letter
  `lu__` push `hv` Unit `ho` that `hv` current
 
--- TODO: Use a Scrolling Tree instead of a Scrolling List
--- TODO: Put a proper quantified name in each variable slot
-positions x = is @Arity x `yo` I `yi` to @(Scrolling List)
- `kyo` unwrap @AR @(Unit `L` Scrolling List `WR` _)
-
 -- I think I should reimplement Scrolling Tree, so we have a Scrolling List as descendants
-
--- name :: Scrolling List Unit `AR__` State `T'I` Namespace `T'I` Scrolling List Latin
--- name x = State `hv__` Event `hv` switch `hv` by I   `ha_` Scope `hv` at @(Posit
 
 rename :: Scrolling List Latin `AR` Scrolling List Latin
 rename x = focus `ho` that `hv` x `hv` by (Only `ha` A)
@@ -45,14 +34,44 @@ target :: Scrolling List Latin `AR__` Tree Latin
 target x = Construct (Node (by T) (x `yi` rename `yo` intro @Tree `ho'he` is `yi` to @(Nonempty List) `ho` to @List))
 
 print_subtree subtree = Empty @List `hu` enter @World
- `la` Same `hu` (subtree `yokl` Forth `ha` World `ha` print_tree) `ho'yu` Unit
+ `la` Same `hu` (subtree `yokl` Forth `ha` World `ha` print) `ho'yu` Unit
  `li` unwrap subtree
 
-print_tree = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Space `hv` Unit
- `lo__'yp` Some `hu_` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Opened `hv` Round `ho_` Await
- `lo__'yp` output `ha` Glyph `ha` Letter `ha` Lower `ha` this `ha` top `ho_` Await
- `lo__'yp` sub `ho` this `ho` print_subtree `ho_` Await
- `lo__'yp` Some `hu_` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Closed `hv` Round `ho_` Await
+print = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Space `hv` Unit
+ `lo__'yp` Some `hu_` Await `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Opened `hv` Round
+ `lo__'yp` Await `ha` output `ha` Glyph `ha` Letter `ha` Lower `ha` this `ha` top
+ `lo__'yp` Await `ha` print_subtree  `ha` this `ha` sub
+ `lo__'yp` Some `hu_` Await `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Closed `hv` Round
 
-main = arguments `yo` positions
- `yokl'yokl` Forth `ha` Forth `ha` World `ha` print_tree `ha` target
+-- TODO: Use a Scrolling Tree instead of a Scrolling List
+-- TODO: Put a proper quantified name in each variable slot
+-- positions :: Nonempty List Unit `AR_` Nonempty List `T'I` Scrolling List Latin
+positions x = is @Arity x `yo` I `yi` to @(Scrolling List)
+ `kyo` unwrap @AR @(Unit `L` Scrolling List `WR` _)
+ `yi_` to @(Nonempty List) `ho` to @List
+ -- `kyo` unwrap @AR @(Unit `L` No List `WR` _)
+
+-- operators :: List (Scrolling List Latin)
+operators = to @List `hv` arguments `yok` Cascade `ha` positions
+
+atop (These x y) = Nonempty @List `ha` Item x `ha` Next `ha` Item y `ha` Last
+
+-- Since traversables uses applicative instance inside - can I use Cross label here?
+-- combined :: List (List (Scrolling List Latin))
+combine operators = operators `lu` Cross operators `yp'yo` by `ha` atop
+
+inject layer = to @List `ha` to @(Nonempty List) `ha_` focus `ho` that `hv` layer `ha_` Only
+
+-- TODO: stateful variable length
+new layer = enter @(State `T'I` Tree Latin)
+ `yuk_` Old `ha` State `hv__` Event `hv_` get @(Tree Latin)
+ `yok_` New `ha` State `ha__` Event `ha_` put `ha` inject layer `ho_'ha` Scope `hv` sub @Tree
+ `yuk_` New `ha` State `hv__` Event `hv_` put `hv` by T `ha_` Scope `hv` top @Tree
+
+lay layers = (layers `yokl` Forth `ha` New `ha` new `ha'yo` intro @Tree)
+ `he'he'hv_` intro @Tree `hv` by A `yi` that
+
+main = combine operators
+ `yokl` Forth `ha` World
+ `ha__'yuk` World `ha` output `ha` Caret `ha` Newline `hv` Unit
+ `ha__` print `ha` lay
