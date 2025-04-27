@@ -43,30 +43,28 @@ type Functorial = Tree Name
 
 data Variable = Parametric | Positioned
 
-type Generic = Parametric `L` Nonempty List `T'I` Unit
-type Ignored = Positioned `L` Nonempty List `T'I` Unit
+type Effectful = Parametric `L` Nonempty List `WR` Unit
+type Parameter = Positioned `L` Nonempty List `WR` Unit
 
-type Namespace = Generic `P` Ignored
+type Namespace = Effectful `P` Parameter
 
 type Name = Nonempty List Latin
 
-type Quantity = Nonempty List Unit
+type Counter = Nonempty List Unit
 
 name symbol variables = variables
  `yukl` Forth `ha` New `ha` State `ha` Event
  `hv__` is `ho'yo` symbol `lo` push Unit `ho` that
 
-layer :: Scrolling List Unit `AR__` State `WR_` Namespace `P` Functorial `WR_` Name
 layer x = enter @(State `WR_` Namespace `P` Functorial)
  `yuk____` New `ha` State `hv___` Event `hv_` get @Functorial `ha__` Scope `hv` at @Functorial
- `lu___'yp` New `ha` State `hv___` Event `hv_'he'he` name I `ha` that `hv'he` x `ha__` Scope `hv` at @Ignored `ho_'he` Scope `hv` it @Quantity
+ `lu___'yp` New `ha` State `hv___` Event `hv_'he'he` name I `ha` that `hv'he` x `ha__` Scope `hv` at @Parameter `ho_'he` Scope `hv` it @Counter
  `yok____` New `ha` State `ha___` Event `ha_` put `ha` inject `ho__'ha` Scope `hv` at @Functorial `ho_` Scope `hv` sub @Tree
- `yuk____` New `ha` State `hv___` Event `hv_` put `hv` [by T] `ha__` Scope `hv` at @Functorial `ho_` Scope `hv` top @Tree
+ `yuk____` New `ha` State `hv___` Event `hv_'he'he` name T `ha` this `hv'he` x `ha__` Scope `hv` at @Effectful `ho_'he` Scope `hv` it @Counter
+ `yok____` New `ha` State `ha___` Event `ha_` put `ha'he` is @Name `ho__'ha` Scope `hv` at @Functorial `ho_` Scope `hv` top @Tree
 
--- TODO: try to use recently updated `lo` here!
-inject :: (Functorial `P` Shafted List Name) `AR__` List `T'I` Functorial
-inject (These focused shafted) = Only focused `lu` (shafted `yo` intro @Tree)
- `yi` wrap @AR @(Scrolling List Functorial) `ho` to @(Nonempty List) `ho` to @List
+inject = to @List `ha` to @(Nonempty List) `ha` is @(Scrolling List Functorial)
+ `ha__` Only `ha` this @Functorial `lo` that @(Shafted List Name) `ho'yo` intro @Tree
 
 initial = wrap [Unit] `lu` wrap [Unit] `lu` intro @Tree [by A]
 
