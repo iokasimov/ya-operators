@@ -41,33 +41,34 @@ combine ops = ops `lu` Cross ops `yp'yo` by `ha` atop
 
 type Functorial = Tree Name
 
--- data Variable = Parametric | Positioned
+data Variable = Parametric | Positioned
 
-type Parametric = Void
-type Positioned = Void `P` Void
+type Generic = Parametric `L` Nonempty List `T'I` Unit
+type Ignored = Positioned `L` Nonempty List `T'I` Unit
 
--- type Namespace = (Parametric `L` Nonempty List) Unit `P` (Positioned `L` Nonempty List) Unit
+type Namespace = Generic `P` Ignored
 
 type Name = Nonempty List Latin
 
-type Namespace = Nonempty List Unit
+type Quantity = Nonempty List Unit
 
-name :: (Unit `AR` Latin) `AR___` Nonempty List Unit `AR_` (Name `P` Namespace)
-name symbol = (is `ho'yo` symbol) `lo` (push Unit `ho` that)
+name symbol variables = variables
+ `yukl` Forth `ha` New `ha` State `ha` Event
+ `hv__` is `ho'yo` symbol `lo` push Unit `ho` that
 
 layer :: Scrolling List Unit `AR__` State `WR_` Namespace `P` Functorial `WR_` Name
 layer x = enter @(State `WR_` Namespace `P` Functorial)
- `yuk___` New `ha` State `hv___` Event `hv_` get @Functorial`ha__` Scope `hv` at @Functorial
- `lu__'yp` New (that `hv'he` x `yukl` Forth `ha` New `ha` State `hv__` Event `hv` name I `ha_` Scope `hv` at @Namespace @(Namespace `P` Functorial))
- `yok___` New `ha` State `ha___` Event `ha_` put `ha` inject `ho__'ha` Scope `hv` at @Functorial `ho_` Scope `hv` sub @Tree
- `yuk___` New `ha` State `hv___` Event `hv_` put `hv` [by T] `ha__` Scope `hv` at @Functorial `ho_` Scope `hv` top @Tree
+ `yuk____` New `ha` State `hv___` Event `hv_` get @Functorial `ha__` Scope `hv` at @Functorial
+ `lu___'yp` New `ha` State `hv___` Event `hv_'he'he` name I `ha` that `hv'he` x `ha__` Scope `hv` at @Ignored `ho_'he` Scope `hv` it @Quantity
+ `yok____` New `ha` State `ha___` Event `ha_` put `ha` inject `ho__'ha` Scope `hv` at @Functorial `ho_` Scope `hv` sub @Tree
+ `yuk____` New `ha` State `hv___` Event `hv_` put `hv` [by T] `ha__` Scope `hv` at @Functorial `ho_` Scope `hv` top @Tree
 
+-- TODO: try to use recently updated `lo` here!
 inject :: (Functorial `P` Shafted List Name) `AR__` List `T'I` Functorial
 inject (These focused shafted) = Only focused `lu` (shafted `yo` intro @Tree)
  `yi` wrap @AR @(Scrolling List Functorial) `ho` to @(Nonempty List) `ho` to @List
 
--- initial = wrap [Unit] `lu` wrap [Unit] `lu` intro @Tree [by A]
-initial = [Unit] `lu` intro @Tree [by A]
+initial = wrap [Unit] `lu` wrap [Unit] `lu` intro @Tree [by A]
 
 main = combine operators
  `yokl` Forth `ha` World
