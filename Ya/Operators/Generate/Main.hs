@@ -5,9 +5,7 @@ import Ya.ASCII
 import Ya.World
 import Ya.Console
 
-type Arity = Nonempty List Unit
-
--- I think I should reimplement Scrolling Tree, so we have a Scrolling List as descendants
+-- I think I should reimplement Scrolling Tree, so that we have a Scrolling List for descendants
 
 print_subtree subtree = Empty @List `hu` enter @World
  `la` Same `hu` (subtree `yokl` Forth `ha` World `ha` print) `ho'yu` Unit
@@ -44,13 +42,13 @@ inject = to @List `ha` to @(Nonempty List) `ha` is @(Scrolling List `WR` Tree Na
 
 initial = wrap [Unit] `lu` wrap [Unit] `lu` intro @Tree [by E]
 
+type Arity = Nonempty List Unit
+
 arguments = is @(Nonempty List Arity) ["#", "##", "###"]
 
 positions x = is @Arity x `yi` to @(Scrolling List)
- `kyo` unwrap @AR @(Unit `L` Scrolling List `WR` _)
- `yi_` to @(Nonempty List) `ho` to @List
+ `kyo` Range `yi_` to @(Nonempty List) `ho` to @List
 
--- TODO: _ `yok` Plane `ha` variance
 operators = arguments `yi` to @List `yok` Plane `ha` positions
 
 combined = operators `lu` Cross operators `yp'yo` by `ha` atop
@@ -60,7 +58,7 @@ atop (These x y) = Nonempty @List `ha` Item x `ha` Next `ha` Item y `ha` Last
 main = combined
  `yokl` Forth `ha` World
  `ha__'yuk` World `ha` output `ha` Caret `ha` Newline `hv` Unit
- `ha__` is @(Nonempty List `T'I` Scrolling List Unit)
+ `ha__` is @(Nonempty List `WR` Scrolling List Unit)
   `ho_'yokl` Forth `ha` New `ha` layer
   `ho_'he'he'hv` initial
   `ho_` print `ha` that @(Tree Name) `ha` that
