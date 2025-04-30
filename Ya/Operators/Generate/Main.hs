@@ -46,16 +46,18 @@ type Arity = Nonempty List Unit
 
 arguments = is @(Nonempty List Arity) ["#", "##", "###"]
 
-positions x = is @Arity x `yi` to @(Scrolling List)
- `kyo` Range `yi_` to @(Nonempty List) `ho` to @List
+positions x = x `yi` to @(Scrolling List) `kyo` Range
 
-operators = arguments `yi` to @List `yok` Plane `ha` positions
-
-combined = operators `lu` Cross operators `yp'yo` by `ha` atop
+operators = arguments `yok` Plane `ha` to @(Nonempty List) `ha` positions
 
 atop (These x y) = Nonempty @List `ha` Item x `ha` Next `ha` Item y `ha` Last
 
-main = combined
+-- TODO: I need to traverse this list and apply `composition` to operators
+templates = is @(Nonempty List Arity) ["", ".", "..", "...", "...."]
+
+composition x = to @List `hv` x `lu` Cross `ha` to @List `hv` x `yp'yo` by `ha` atop
+
+main = composition operators
  `yokl` Forth `ha` World
  `ha__'yuk` World `ha` output `ha` Caret `ha` Newline `hv` Unit
  `ha__` is @(Nonempty List `WR` Scrolling List Unit)
