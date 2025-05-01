@@ -48,19 +48,18 @@ arguments = is @(Nonempty List Arity) ["#", "##", "###"]
 
 positions x = x `yi` to @(Scrolling List) `kyo` Range
 
-operators = arguments `yok` Plane `ha` to @(Nonempty List) `ha` positions
+parameters = arguments `yok` Plane `ha` to @(Nonempty List) `ha` positions
 
-atop (These x y) = Nonempty @List `ha` Item x `ha` Next `ha` Item y `ha` Last
+operators = Nonempty @List
+ `ha___` Next `ho` Item (parameters `yo` intro @(Nonempty List) `yi` to @List)
+ `ha___` Last `ho` Item (to @List `hv` parameters `lu` Cross `ha` to @List `hv` parameters `yp'yo` atop)
 
--- TODO: I need to traverse this list and apply `composition` to operators
-templates = is @(Nonempty List Arity) ["", ".", "..", "...", "...."]
+atop (These x y) = Nonempty @List `ha` Item x `ha` Next `ha` Item y `ha` Last `hv` Unit
 
-composition x = to @List `hv` x `lu` Cross `ha` to @List `hv` x `yp'yo` by `ha` atop
-
-main = composition operators
- `yokl` Forth `ha` World
+main = by operators
+ `yokl'yokl` Forth `ha` Forth `ha` World
  `ha__'yuk` World `ha` output `ha` Caret `ha` Newline `hv` Unit
- `ha__` is @(Nonempty List `WR` Scrolling List Unit)
+ `ha__` is @(Nonempty List `T'I` Scrolling List Unit)
   `ho_'yokl` Forth `ha` New `ha` layer
   `ho_'he'he'hv` initial
   `ho_` print `ha` that @(Tree Name) `ha` that
