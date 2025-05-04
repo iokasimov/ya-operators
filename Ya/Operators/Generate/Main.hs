@@ -5,6 +5,7 @@ import Ya.ASCII
 import Ya.World
 import Ya.Console
 
+import Ya.Operators.Variance
 import Ya.Operators.Template
 import Ya.Operators.Renderer
 
@@ -17,17 +18,16 @@ arguments = is @(Nonempty List Arity) ["#", "##"] -- , "###"]
 
 positions x = to @(Scrolling List) `hv` x
  `kyo` Range `ha` is @(Scrolling List _)
- `yi_` to @(Nonempty List)
 
-variances :: Scrolling List `T'I` Unit `AR___` Nonempty List `T'I_` Scrolling List `T'I` Variant Unit
-variances = Both @(P) `ho` to @(Nonempty List) `ha__` variate Contra `lo` variate Co
+variances = Both @(P) `ha__` variate Contra `lo` variate Co
 
-variate :: (Unit `AR` Unit `S` Unit) `AR__` Scrolling List `T'I` Unit `AR_` Scrolling List `T'I` Variant Unit
-variate f = (focus `ho` this `ho_'yo` Record `ha` f) `lo` (other `ho` this `ho'yo` Ignore)
+variate f = is @(Scrolling List _)
+ `ha__` focus `ho` this `ho_'yo` Record `ha` f
+   `lo` other `ho` this `ho'yo` Ignore
 
 parameters = arguments
- `yok` Plane `ha` positions
- `yok` Plane `ha` variances
+ `yok` Plane `ha` to @(Nonempty List) `ha` positions
+ `yok` Plane `ha` to @(Nonempty List) `ha` variances
 
 templates = Nonempty @List
  `ha_` Next `ho` Item (parameters `yo` intro @(Nonempty List))

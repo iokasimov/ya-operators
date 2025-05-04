@@ -5,6 +5,7 @@ import Ya.ASCII
 import Ya.World
 import Ya.Console
 
+import Ya.Operators.Variance
 import Ya.Operators.Template
 
 target = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Space `hv` Unit
