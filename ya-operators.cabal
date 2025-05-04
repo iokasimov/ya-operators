@@ -9,6 +9,9 @@ cabal-version: >=1.10
 
 library
   exposed-modules:
+   Ya.Operators.Argument
+   Ya.Operators.Namespace
+   Ya.Operators.Variance
    Ya.Operators.Template
    Ya.Operators.Renderer
   build-depends: ya, ya-ascii, ya-world, ya-console

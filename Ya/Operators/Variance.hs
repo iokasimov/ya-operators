@@ -2,12 +2,14 @@ module Ya.Operators.Variance where
 
 import Ya
 
-type Variant e = e `S` e `S` e
-
-pattern Record e = This e
-pattern Ignore e = That e
+type Variance = Unit `S` Unit
 
 pattern Contra e = This e
 pattern Co e = That e
 
-variated f = Record `ha` Contra `ha` f `la` Record `ha` Co `ha` f `la` Ignore `ha` f
+type Variated = Equipped `T'I` Maybe Variance
+
+pattern Record v e = Equip (These e (Some v)) :: Variated e
+pattern Ignore e = Equip (These e (None Unit)) :: Variated e
+
+-- variated f = Record `ha` Contra `ha` f `la` Record `ha` Co `ha` f `la` Ignore `ha` f
