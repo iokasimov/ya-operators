@@ -10,7 +10,7 @@ import Ya.Operators.Template
 import Ya.Operators.Renderer
 
 -- TODO: import Ya.Operators.Arranged
--- TODO: import Ya.Operators.Variance
+-- TODO: import Ya.Operators.Argument
 
 type Arity = Nonempty List Unit
 
@@ -21,7 +21,7 @@ positions x = to @(Scrolling List) `hv` x
 
 variances = Both @(P) `ha__` variate Contra `lo` variate Co
 
-variate f = is @(Scrolling List _)
+variate f = is @(Scrolling List `T'I` Variant Unit)
  `ha__` focus `ho` this `ho_'yo` Record `ha` f
    `lo` other `ho` this `ho'yo` Ignore
 
@@ -38,7 +38,7 @@ initial = wrap [Unit] `lu` wrap [Unit] `lu` intro @Tree `ha` Record `ha` Co `ha`
 main = by templates
  `yokl'yokl` Forth `ha` Forth `ha` World
  `ha__'yuk` World `ha` output `ha` Caret `ha` Newline `hv` Unit
-  `ha__` is -- @(Nonempty List `T'I_` Scrolling List `T'I` Variant Unit)
+  `ha__` is @(Nonempty List `T'I_` Scrolling List `T'I` Variant Unit)
   `ho_'yokl` Forth `ha` New `ha` layer
   `ho_'he'he'hv` initial
   `ho_` render `ha` that
