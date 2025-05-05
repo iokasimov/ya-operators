@@ -61,19 +61,21 @@ titling = enter @(State `T'I` Scrolling Tree Name `P` List Name)
 
 -- TODO: how can we can quickly understand, if we return previous state or only a new one? Using some labels/constructors?
 
--- TODO: this is my next challenge!
+render_token x = enter @(State `T'I` List ASCII)
+ `yuk__` New (x `yokl` Prior `ha` New `ha` State `ha` Event `ha` push @List `ha` Glyph `ha` Letter `ha` Lower)
+ `yuk__` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `ha` Y `hv` Unit
+ `yuk__` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Singlequote `hv` Unit
 
--- U_I_II = x[x]
--- U_II_I = [x]x
-
--- U_I_II_III = xx[x]
--- W_III_I_II = x[x]x
--- W_III_I_II = x[x]x
-
--- render_wrapper = 
---   `lo__'yp` Some `hu_` Await `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Opened `hv` Round
+render_tokens x = x
+ `yokl` Prior `ha` New `ha` render_token
+ `yuk_` New `ha` State `ha` Event `hv` pop @List
+ `he'he'hv___` empty @List
+ `yi__` that @(List _)
+ `yokl` Forth `ha` World `ha` output
 
 -- is @(Namespace `P` Tree Name `P` List Variance)
 render (These (These _namespace functorial) _tokens) = enter @World
- `yuk____` Await `hv` target functorial
+ `yuk____` Await `hv_____` render_tokens _tokens
+ `yuk____` Await `hv_____` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Colon
+ `yuk____` Await `hv_____` target functorial
  -- `yuk____` Await `hv` functorial_constraint (by Co)
