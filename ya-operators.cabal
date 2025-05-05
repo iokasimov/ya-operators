@@ -11,6 +11,7 @@ library
   exposed-modules:
    Ya.Operators.Argument
    Ya.Operators.Namespace
+   Ya.Operators.Constraint
    Ya.Operators.Variance
    Ya.Operators.Tokenizer
    Ya.Operators.Template

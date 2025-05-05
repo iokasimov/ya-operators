@@ -73,25 +73,7 @@ titling = enter @(State `T'I` Scrolling Tree Name `P` List Name)
 -- render_wrapper = 
 --   `lo__'yp` Some `hu_` Await `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Opened `hv` Round
 
-functorial_constraint v = enter @World
- `yuk___` World `ha` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
- `yuk___` World (variant v `yokl` Forth `ha` World `ha` output)
- `yuk___` World `ha` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
- `yuk___` World (categories v `yokl` Forth `ha` World `ha` output)
-
-categories = is @(Nonempty List ASCII)
- `ha__` Some `hu` "from from"
-   `la` Some `hu` "from into"
-
-variant = is @(Nonempty List ASCII)
- `ha__` Some `hu` "Contravariant"
-   `la` Some `hu` "Covariant"
-
--- is_first = is @(Nonempty List ASCII)
---  `ha__` Some `hu` "Yoneda Functor from into"
---    `la` Some `hu` "Endo Semi Functor from"
-
 -- is @(Namespace `P` Tree Name `P` List Variance)
-render (These namespace functorial) = enter @World
+render (These (These _namespace functorial) _tokens) = enter @World
  `yuk____` Await `hv` target functorial
  -- `yuk____` Await `hv` functorial_constraint (by Co)
