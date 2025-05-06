@@ -48,10 +48,11 @@ render_tokens x = x
  `yi__` that @(List _)
  `yokl` Forth `ha` World `ha` output
 
--- TODO: if `other` is empty, discard a wrapper
 render_wrapper x = Some `hu_` State `ha` Event `ha` push @List `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
  `lo_'yp` New `ha` render_position `ha` this @(Singular `T'I` Name) `ha` focus
- `lo_'yp` New `ha` render_position `ha` this @(Shafted List `T'I` Name) `ha` other
+ `lo_'yp` Empty @List `hu_` New `ha` intro @(State `T'I` List ASCII) `ha` Glyph `ha` Letter `ha` Upper `hv` by E
+    `la` New `ha` render_position `ha` is @(Nonempty List _)
+   `ha_` to @List `ha` this @(Shafted List `T'I` Name) `ha` other
  `lo_'yp` Some `hu_` New `ha` State `ha` Event `ha` push @List `ha` Glyph `ha` Letter `ha` Upper `hv` by T
  `li_` quant I x `he'he'hv` intro @(Nonempty List) Unit `yi` this @(Scrolling List `T'I` _)
 
@@ -60,16 +61,16 @@ render_position name = name
  `yuk_____` New  `ha` State `ha` Event `ha` push `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Singlequote
 
 render_wrappers layers = layers
-  `yokl` Forth `ha` New `ha` render_wrapper `ha` this
-  `he'he'hv___` empty @List
-  `yi__` that @(List ASCII)
-  `yokl` Forth `ha` World `ha` output
+ `yokl` Forth `ha` New `ha` render_wrapper `ha` this
+ `he'he'hv___` empty @List
+ `yi__` that @(List ASCII)
+ `yokl` Forth `ha` World `ha` output
 
 -- is @(Namespace `P` Tree Name `P` List Variance `P` List Layer)
 render (These (These (These _namespace functorial) tokens) layers) = enter @World
- `yuk____` Await `hv_____` render_tokens tokens
- `yuk____` Await `hv_____` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Colon
- `yuk____` Await `hv_____` target functorial
- `yuk____` Await `hv_____` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
- `yuk____` Await `hv_____` render_wrappers layers
+ `yuk____` World `hv_____` render_tokens tokens
+ `yuk____` World `hv_____` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Colon
+ `yuk____` World `hv_____` target functorial
+ `yuk____` World `hv_____` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
+ `yuk____` World `hv_____` render_wrappers layers
  -- `yuk____` Await `hv` functorial_constraint (by Co)
