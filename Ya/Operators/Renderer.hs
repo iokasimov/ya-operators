@@ -7,6 +7,7 @@ import Ya.Console
 
 import Ya.Operators.Variance
 import Ya.Operators.Namespace
+import Ya.Operators.Constraint
 import Ya.Operators.Template
 
 target = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Space `hv` Unit
@@ -74,7 +75,7 @@ render_tokens x = x
  `yokl` Forth `ha` World `ha` output
 
 -- is @(Namespace `P` Tree Name `P` List Variance)
-render (These (These _namespace functorial) _tokens) = enter @World
+render (These (These (These _namespace functorial) _tokens) layers) = enter @World
  `yuk____` Await `hv_____` render_tokens _tokens
  `yuk____` Await `hv_____` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Colon
  `yuk____` Await `hv_____` target functorial

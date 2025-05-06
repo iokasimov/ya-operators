@@ -3,6 +3,8 @@ module Ya.Operators.Namespace where
 import Ya
 import Ya.ASCII
 
+import Ya.Operators.Variance
+
 type Name = Nonempty List Latin
 
 quant symbol variables = variables `yokl` Forth `ha` New `ha` State `ha` Event `ha` fill symbol where
