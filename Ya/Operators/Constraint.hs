@@ -35,13 +35,3 @@ functorial_constraint _ = enter @World
 -- W_III_I_II = x[x]x
 -- W_III_II_I = [x]xx
 
-type Constraint = List ASCII
-
-f x = Some `hu_` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Upper `hv` by U
- `lo_'yp` New `ha` positioned `ha` this @(Shafted List `T'I` Name) `ha` other
- `lo_'yp` New `ha` positioned `ha` this @(Singular `T'I` Name) `ha` focus
- `li_` quant I x `he'he'hv` intro @(Nonempty List) Unit `yi` this @(Scrolling List `T'I` _)
-
-positioned name = name
- `yokl'yokl` Forth `ha` Forth `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Upper
- `yuk_____` New  `ha` State `ha` Event `ha` push `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Underscore

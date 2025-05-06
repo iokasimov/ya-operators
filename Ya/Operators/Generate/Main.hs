@@ -12,7 +12,7 @@ import Ya.Operators.Tokenizer
 import Ya.Operators.Template
 import Ya.Operators.Renderer
 
-arguments = is @(Nonempty List Arity) ["#", "##", "###"]
+arguments = is @(Nonempty List Arity) ["#", "##"] -- , "###"
 
 positions x = to @(Scrolling List) `hv` x
  `kyo` Range `ha` is @(Scrolling List Unit)

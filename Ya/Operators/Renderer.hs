@@ -16,10 +16,6 @@ target = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Space `hv`
  `lo__'yp` Await `ha` target_subtree `ha` this @(List Functorial) `ha` sub @Tree
  `lo__'yp` Some `hu_` Await `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Closed `hv` Round
 
--- target_element = is @(Equipped `T'I` Maybe Variance `T'I` Name)
---  `ho______'he` this @Name `ho` render_variable
---   `lo___'yp` Await `ha__` that @(Maybe Variance) `ho_'yokl` Run `ha` World `ha` output `ha` Glyph `ha` Symbol `ha` Punctuate `ha` (Hyphen `la` Plus)
-
 render_variable x = x `yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
 
 target_subtree subtree = Empty @List `hu` enter @World
@@ -33,32 +29,10 @@ calculate variances = variances
  `he'he'hv___` by Co
  `yi__` that @Variance
 
--- is @(Equipped _ _) `ho'he'he` this `ho'ho` 
-
 compare :: Maybe Variance `AR__` Variance `AR_` Unit `S` Unit
 compare current result = Some `hu` result
  `la` (Some `hu` by Contra `la` Some `hu` by Co) `ha` (`hd'q` result)
  `li` current
- 
--- title :: Tree Name `AR___` Scrolling Tree Name
--- title = to @(Scrolling Tree)
-
--- type Title = List ASCII
-
-titling = enter @(State `T'I` Scrolling Tree Name `P` List Name)
- `yuk___` State `ho` Old
-  `hv___` Event `hv` get @Name
-   `ha__` Scope `hv` at @(Scrolling Tree Name)
-  `ho_'he` Scope `hv` at @(Scrolling List `T'TT'I` Tree `T'I_` Name)
-  `ho_'he` Scope `hv` focus
-  `ho_'he` Scope `hv` it
-    `ho_` Scope `hv` top
- `yok___` State `ho` New
-  `ha___` Event `ha` push
-  `ho_'ha` Scope `hv` at @(List Name)
- `yuk___` State `ho` New
-  `hv___` Event `ha` shift `ha` Level `ha` Down `hv` Unit
-   `ha__` Scope `hv` at @(Scrolling Tree Name)
 
 -- TODO: how can we can quickly understand, if we return previous state or only a new one? Using some labels/constructors?
 
@@ -74,9 +48,28 @@ render_tokens x = x
  `yi__` that @(List _)
  `yokl` Forth `ha` World `ha` output
 
--- is @(Namespace `P` Tree Name `P` List Variance)
-render (These (These (These _namespace functorial) _tokens) layers) = enter @World
- `yuk____` Await `hv_____` render_tokens _tokens
+-- TODO: if `other` is empty, discard a wrapper
+render_wrapper x = Some `hu_` State `ha` Event `ha` push @List `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
+ `lo_'yp` New `ha` render_position `ha` this @(Singular `T'I` Name) `ha` focus
+ `lo_'yp` New `ha` render_position `ha` this @(Shafted List `T'I` Name) `ha` other
+ `lo_'yp` Some `hu_` New `ha` State `ha` Event `ha` push @List `ha` Glyph `ha` Letter `ha` Upper `hv` by T
+ `li_` quant I x `he'he'hv` intro @(Nonempty List) Unit `yi` this @(Scrolling List `T'I` _)
+
+render_position name = name
+ `yokl'yokl` Forth `ha` Forth `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Upper
+ `yuk_____` New  `ha` State `ha` Event `ha` push `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Singlequote
+
+render_wrappers layers = layers
+  `yokl` Forth `ha` New `ha` render_wrapper `ha` this
+  `he'he'hv___` empty @List
+  `yi__` that @(List ASCII)
+  `yokl` Forth `ha` World `ha` output
+
+-- is @(Namespace `P` Tree Name `P` List Variance `P` List Layer)
+render (These (These (These _namespace functorial) tokens) layers) = enter @World
+ `yuk____` Await `hv_____` render_tokens tokens
  `yuk____` Await `hv_____` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Colon
  `yuk____` Await `hv_____` target functorial
+ `yuk____` Await `hv_____` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
+ `yuk____` Await `hv_____` render_wrappers layers
  -- `yuk____` Await `hv` functorial_constraint (by Co)
