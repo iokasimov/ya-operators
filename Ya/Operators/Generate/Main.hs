@@ -32,7 +32,7 @@ initial = wrap [Unit] `lu` wrap [Unit] `lu` intro @Tree `ha` intro @(Nonempty Li
 main = by templates
  `yokl'yokl` Forth `ha` Forth `ha` World
  `ha__'yuk` World `ha` output `ha` Caret `ha` Newline `hv` Unit
-  `ha__` is -- @(Nonempty List `T'I_` Scrolling List `T'I` Unit)
+  `ha__` is @(Nonempty List `T'I` Scrolling List Unit `P` Variance)
    `ho_'yokl` Forth `ha` New `ha` layer
    `ho_'he'he'hv` initial
-   `ho_` render `ha` that @(Namespace `P` Functorial `P` List Token `P` List Layer)
+   `ho_` render `ha` that

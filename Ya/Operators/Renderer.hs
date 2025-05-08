@@ -12,8 +12,8 @@ import Ya.Operators.Template
 
 target = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Space `hv` Unit
  `lo__'yp` Some `hu_` Await `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Opened `hv` Round
- `lo__'yp` Await `ha` render_variable `ha` this @(Name) `ha` top @Tree
- `lo__'yp` Await `ha` target_subtree `ha` this @(List Functorial) `ha` sub @Tree
+ `lo__'yp` Await `ha` render_variable `ha` this @Name `ha` top @Tree
+ `lo__'yp` Await `ha` target_subtree `ha` this @(List `T'I` Tree Name) `ha` sub @Tree
  `lo__'yp` Some `hu_` Await `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Closed `hv` Round
 
 render_variable x = x `yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
@@ -22,7 +22,6 @@ target_subtree subtree = Empty @List `hu` enter @World
  `la` Same `hu` (subtree `yokl` Forth `ha` World `ha` target) `ho'yu` Unit
  `li` unwrap @AR @(List _) subtree
 
--- calculate :: List `T'I` Maybe Variance `AR__` Variance
 calculate variances = variances
  `yokl` Forth `ha` New `ha` State `ha` Event
  `ha__` compare `ho'ho` auto
@@ -67,9 +66,9 @@ render_variance = is @(Nonempty List ASCII)
  `ho_'yokl` Forth `ha` World `ha` output
  `ha__` Contra `hu` "Contravariant" `la` Co `hu` "Covariant"
 
-render_constraint = that @Variance `ho` render_variance
+render_constraint = at @Variance @Layer `ho` this `ho` render_variance
  `lo____'yp` Some `hu____` Await (" Yoneda Functor from into (" `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output)
- `lo____'yp` Await `ha_` this @(Scrolling List Unit) `ho` render_wrapper
+ `lo____'yp` Await `ha_` at @(Scrolling List Name) @Layer `ho` this `ho` render_wrapper
  `lo____'yp` Some `hu____` Await (") => " `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output)
 
 -- is @(Namespace `P` Tree Name `P` List Variance `P` List Layer)
