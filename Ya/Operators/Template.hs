@@ -17,7 +17,7 @@ quantification = State `ha___` Event `ha_` variable T focus `ha` this `ho__'ha` 
 
 -- substitution :: Only Name `P` Shafted List Name `P` Variance `AR_____` State `T'I` Namespace `P` Tree Name `P` List Token `P` List Layer `T'I` (Tree Name `P` Layer)
 substitution = State `ha___` Event `ha_` inject `ha` this `ho__'ha` Scope `hv` at @(Tree Name)
- `lo_____'yp` New `ha` State `ha___` Event `ha_` push @List `ha'yoi` wrap @(AR) @(Scrolling List Name) `ho__'ha` Scope `hv` at @(List Layer)
+ `lo_____'yp` New `ha` State `ha___` Event `ha_` push @List `ha'yoi` wrap @(AR) `ho__'ha` Scope `hv` at @(List Layer)
 
 -- inject :: Only Name `P` Shafted List Name `AR___` Tree Name `AR_` Tree Name `P` Tree Name
 inject x tree = Only tree `lu` that @(Shafted List `T'I` Name) `ho'yo` intro @Tree `hv` x
@@ -26,7 +26,7 @@ inject x tree = Only tree `lu` that @(Shafted List `T'I` Name) `ho'yo` intro @Tr
 
 tokenization = State `ha___` Event `ha_` push @List `ha` tokenize `ho__'ha` Scope `hv` at @(List Token) 
 
--- layer' :: Scrolling List Unit `P` Variance `AR___` State `T'I` Namespace `P` Tree Name `P` List Token `P` List Layer `T'I` _
+-- layer :: Scrolling List Unit `P` Variance `AR___` State `T'I` Namespace `P` Tree Name `P` List Token `P` List Layer `T'I` _
 layer x = enter @(State `T'I` Namespace `P` Tree Name `P` List Token `P` List Layer)
  `yuk___` New `ha` quantification `hv` x
  `yok___` New `ha` substitution `ha` (`lu` that x)

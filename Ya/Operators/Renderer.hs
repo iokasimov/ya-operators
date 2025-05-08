@@ -53,10 +53,8 @@ render_wrapper x = Some `hu_` State `ha` Event `ha` push @List `ha` Glyph `ha` S
     `la` New `ha` render_position `ha` is @(Nonempty List _)
    `ha_` to @List `ha` this @(Shafted List `T'I` Name) `ha` other
  `lo_'yp` Some `hu_` New `ha` State `ha` Event `ha` push @List `ha` Glyph `ha` Letter `ha` Upper `hv` by T
- `li_` quant I x `he'he'hv` intro @(Nonempty List) Unit `yi` this @(Scrolling List `T'I` _)
- `he'he'hv__` empty @List
- `yi_` that @(List ASCII)
- `yokl` Forth `ha` World `ha` output
+ `li_` quant I x `he'he'hv` intro @(Nonempty List) Unit `yi` this @(Scrolling List `T'I` _) `he'he'hv__` empty @List
+ `yi_` that @(List ASCII) `ho_'yokl` Forth `ha` World `ha` output
 
 render_position name = name
  `yokl'yokl` Forth `ha` Forth `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Upper
@@ -66,9 +64,18 @@ render_variance = is @(Nonempty List ASCII)
  `ho_'yokl` Forth `ha` World `ha` output
  `ha__` Contra `hu` "Contravariant" `la` Co `hu` "Covariant"
 
-render_constraint = at @Variance @Layer `ho` this `ho` render_variance
+render_variables = intro @World
+ `lo____'yp` World `ha____` focus `ho` this `ho'he` is `ho__'yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
+ `lo____'yp` World `ha____` other `ho` this `ho___'yokl` Forth `ha` World `ha` render_separate_variable
+
+render_separate_variable = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
+ `lo____'yp` World `ha__'yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
+
+render_constraint = that @Variance `ho` render_variance
  `lo____'yp` Some `hu____` Await (" Yoneda Functor from into (" `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output)
- `lo____'yp` Await `ha_` at @(Scrolling List Name) @Layer `ho` this `ho` render_wrapper
+ `lo____'yp` Await `ha___` this @(Scrolling List Name) `ho` render_wrapper
+ `lo____'yp` Await `ha___` this @(Scrolling List Name) `ho` render_variables
+  -- `ho_'yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
  `lo____'yp` Some `hu____` Await (") => " `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output)
 
 -- is @(Namespace `P` Tree Name `P` List Variance `P` List Layer)

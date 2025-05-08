@@ -15,13 +15,13 @@ import Ya.Operators.Renderer
 arguments = is @(Nonempty List Arity) ["#", "##"] -- , "###"
 
 positions x = to @(Scrolling List) `hv` x
- `kyo` Range `ha` is @(Scrolling List Unit)
+ `kyo` Range `ha` is @(Scrolling List _)
 
 variances = Both @(P) `ha__` (`lu` by Contra) `lo` (`lu` by Co)
 
 parameters = arguments
- `yok_` Plane `ha_` positions `ho` to @(Nonempty List)
- `yok_` Plane `ha_` variances `ho` to @(Nonempty List)
+ `yok` Plane `ha_` positions `ho` to @(Nonempty List)
+ `yok` Plane `ha_` variances `ho` to @(Nonempty List)
 
 templates = Nonempty @List
  `ha_` Next `ho` Item (parameters `yo` intro @(Nonempty List))
