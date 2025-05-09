@@ -77,14 +77,11 @@ render_declaration_subtree subtree = Empty @List `hu` enter @World
 
 render_variable x = x `yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
 
-prepare_universal_variables symbol namespace = namespace
- `yokl` Forth `ha` New `ha__` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `ha` symbol
- `ho_'yuk` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
- `he'he'hv___` empty @List `yi__` that @(List ASCII)
+prepare_universal_variables :: Unit `AR` Latin `AR__` Nonempty List Unit `AR_` Nonempty List Name
+prepare_universal_variables symbol namespace = namespace `kyo` Range `ha'yo` symbol `ha` is @(Nonempty List _)
 
--- TODO: instead of stateful `prepare_universal_variables` use comonadic `Range`!
 render_universal_variables = at @(Counter Parametric) @Namespace `ho` this
- `ho'he` prepare_universal_variables T `ho_'yokl` Forth `ha` World `ha` output
+ `ho'he` pop `ho` that `ho` prepare_universal_variables T `ho_'yokl` Prior `ha` World `ha` render_separate_variable
 
 -- is @(Namespace `P` Tree Name `P` List Variance `P` List Layer)
 render (These (These (These namespace functorial) tokens) layers) = enter @World
