@@ -9,16 +9,12 @@ import Ya.Operators.Variance
 import Ya.Operators.Namespace
 import Ya.Operators.Template
 
-calculate variances = variances
+calculate_variance :: List Layer `AR__` Variance
+calculate_variance layers = layers
  `yokl` Forth `ha` New `ha` State `ha` Event
- `ha__` compare `ho'ho` auto
+ `ha__` that @Variance `ho` compare `ho'ho` auto
  `he'he'hv___` by Co
  `yi__` that @Variance
-
-compare :: Maybe Variance `AR__` Variance `AR_` Unit `S` Unit
-compare current result = Some `hu` result
- `la` (Some `hu` by Contra `la` Some `hu` by Co) `ha` (`hd'q` result)
- `li` current
 
 -- TODO: how can we can quickly understand, if we return previous state or only a new one? Using some labels/constructors?
 
@@ -65,25 +61,30 @@ render_constraint = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv`
  `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_variables
  `lo____'yp` Some `hu____` World (") => \n" `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output)
 
-render_declaration = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Space `hv` Unit
+render_target variance = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Space `hv` Unit
  `lo__'yp` Some `hu_` World `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Opened `hv` Round
- `lo__'yp` World `ha` render_variable `ha` this @Name `ha` top @Tree
- `lo__'yp` World `ha` render_declaration_subtree `ha` this @(List `T'I` Tree Name) `ha` sub @Tree
+ `lo__'yp` World `ha` render_target_variable variance `ha` this @Name `ha` top @Tree
+ `lo__'yp` World `ha` render_target_subtree variance `ha` this @(List `T'I` Tree Name) `ha` sub @Tree
  `lo__'yp` Some `hu_` World `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Closed `hv` Round
 
-render_declaration_subtree subtree = Empty @List `hu` enter @World
- `la` Same `hu` (subtree `yokl` Forth `ha` World `ha` render_declaration) `ho'yu` Unit
+render_target_subtree variance subtree = Empty @List `hu` enter @World
+ `la` Same `hu` (subtree `yokl` Forth `ha` World `ha` render_target variance) `ho'yu` Unit
  `li` unwrap @(AR) @(List _) subtree
 
 render_variable x = x `yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
+
+-- TODO: This conditional is not elegant and error prone, we do it because we loose `Scrolling List` structure
+render_target_variable variance x = that @Name `la` Some `hu` prepare_variance_target variance `li` [by E] `hd'q` x
+ `yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
+
+prepare_variance_target = Some `hu` [by A] `la` Some `hu` [by O]
 
 render_universal_variables symbol x = x
  `yi` is @(Nonempty List Unit)
  `kyo` Range @(Nonempty List Latin) `ha'yo` (symbol :: Unit `AR` Latin) `ha` is @(Nonempty List Unit)
  `yokl` Prior `ha` World `ha` render_separate_variable
 
--- is @(Namespace `P` Tree Name `P` List Variance `P` List Layer)
-render (These (These (These namespace functorial) tokens) layers) = enter @World
+render (These (These (These namespace functorial) tokens) layers@(calculate_variance -> variance)) = enter @World
  `yuk____` World `hv_____` output `ha` Caret `ha` Newline `hv` Unit
  `yuk____` World `hv_____` render_tokens tokens
  `yuk____` World `hv_____` is @(List ASCII) `hv` " :: forall" `yokl` Forth `ha` World `ha` output
@@ -92,5 +93,7 @@ render (These (These (These namespace functorial) tokens) layers) = enter @World
  `yuk____` World `hv_____` " a o ." `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
  `yuk____` World `hv_____` output `ha` Caret `hv` by Newline
  `yuk____` World `hv_____` layers `yokl` Forth `ha` World `ha__` render_constraint
- `yuk____` World `hv_____` render_declaration functorial
+ `yuk____` World `hv_____` render_target (not variance) functorial
+ `yuk____` World `hv_____` " -> into (into a o)" `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
+ `yuk____` World `hv_____` render_target variance functorial
  `yuk____` World `hv_____` output `ha` Caret `hv` by Newline
