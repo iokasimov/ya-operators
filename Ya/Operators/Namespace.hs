@@ -8,9 +8,9 @@ import Ya.Operators.Variance
 type Name = Nonempty List Latin
 
 quant symbol variables = variables
- `yukl` Forth `ha` New `ha` State `ha` Event `hv` fill symbol where
+ `yukl` Forth `ha` New `ha` State `ha` Event `hv` fill symbol
 
- fill symbol ns = ns `yo` symbol `lu_` push Unit `ho` that `hv` ns
+fill symbol ns = ns `yo` symbol `lu_` push Unit `ho` that `hv` ns
 
 data Variable = Parametric | Positioned
 

@@ -16,7 +16,8 @@ arguments = is @(Nonempty List Arity) ["#", "##"] -- , "###"
 
 positions x = x `kyo` Range `ha` is @(Scrolling List _)
 
-variances = Both @(P) `ho` to @(Nonempty List) `ha__` (`lu` by Contra) `lo` (`lu` by Co)
+variances = Both @(P) `ho` to @(Nonempty List)
+ `ha__` (`lu` by Contra) `lo` (`lu` by Co)
 
 parameters = arguments
  `yok` Plane `ha` positions
@@ -30,7 +31,6 @@ initial = wrap [Unit] `lu` wrap [Unit] `lu` intro @Tree `ha` intro @(Nonempty Li
 
 main = by templates
  `yokl'yokl` Forth `ha` Forth `ha` World
- `ha__'yuk` World `ha` output `ha` Caret `ha` Newline `hv` Unit
   `ha__` is @(Nonempty List `T'I` Scrolling List Unit `P` Variance)
    `ho_'yokl` Forth `ha` New `ha` layer
    `ho_'he'he'hv` initial

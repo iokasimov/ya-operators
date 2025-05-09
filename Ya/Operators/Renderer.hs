@@ -77,17 +77,19 @@ render_declaration_subtree subtree = Empty @List `hu` enter @World
 
 render_variable x = x `yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
 
-prepare_universal_variables :: Unit `AR` Latin `AR__` Nonempty List Unit `AR_` Nonempty List Name
-prepare_universal_variables symbol namespace = namespace `kyo` Range `ha'yo` symbol `ha` is @(Nonempty List _)
-
-render_universal_variables = at @(Counter Parametric) @Namespace `ho` this
- `ho'he` pop `ho` that `ho` prepare_universal_variables T `ho_'yokl` Prior `ha` World `ha` render_separate_variable
+render_universal_variables symbol x = x
+ `yi` is @(Nonempty List Unit)
+ `kyo` Range @(Nonempty List Latin) `ha'yo` (symbol :: Unit `AR` Latin) `ha` is @(Nonempty List Unit)
+ `yokl` Prior `ha` World `ha` render_separate_variable
 
 -- is @(Namespace `P` Tree Name `P` List Variance `P` List Layer)
 render (These (These (These namespace functorial) tokens) layers) = enter @World
+ `yuk____` World `hv_____` output `ha` Caret `ha` Newline `hv` Unit
  `yuk____` World `hv_____` render_tokens tokens
  `yuk____` World `hv_____` is @(List ASCII) `hv` " :: forall" `yokl` Forth `ha` World `ha` output
- `yuk____` World `hv_____` render_universal_variables namespace
+ `yuk____` World `hv_____` namespace `yi` at @(Counter Parametric) `ho` this `ho'he` pop `ho` that `ho` render_universal_variables T
+ `yuk____` World `hv_____` namespace `yi` at @(Counter Positioned) `ho` this `ho'he` pop `ho` that `ho` render_universal_variables I
+ `yuk____` World `hv_____` " a o ." `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
  `yuk____` World `hv_____` output `ha` Caret `hv` by Newline
  `yuk____` World `hv_____` layers `yokl` Forth `ha` World `ha__` render_constraint
  `yuk____` World `hv_____` render_declaration functorial
