@@ -7,20 +7,7 @@ import Ya.Console
 
 import Ya.Operators.Variance
 import Ya.Operators.Namespace
-import Ya.Operators.Constraint
 import Ya.Operators.Template
-
-target = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Space `hv` Unit
- `lo__'yp` Some `hu_` Await `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Opened `hv` Round
- `lo__'yp` Await `ha` render_variable `ha` this @Name `ha` top @Tree
- `lo__'yp` Await `ha` target_subtree `ha` this @(List `T'I` Tree Name) `ha` sub @Tree
- `lo__'yp` Some `hu_` Await `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Closed `hv` Round
-
-render_variable x = x `yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
-
-target_subtree subtree = Empty @List `hu` enter @World
- `la` Same `hu` (subtree `yokl` Forth `ha` World `ha` target) `ho'yu` Unit
- `li` unwrap @AR @(List _) subtree
 
 calculate variances = variances
  `yokl` Forth `ha` New `ha` State `ha` Event
@@ -71,17 +58,40 @@ render_variables = intro @World
 render_separate_variable = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
  `lo____'yp` World `ha__'yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
 
-render_constraint = that @Variance `ho` render_variance
- `lo____'yp` Some `hu____` Await (" Yoneda Functor from into (" `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output)
- `lo____'yp` Await `ha___` this @(Scrolling List Name) `ho` render_wrapper
- `lo____'yp` Await `ha___` this @(Scrolling List Name) `ho` render_variables
-  -- `ho_'yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
- `lo____'yp` Some `hu____` Await (") => " `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output)
+render_constraint = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
+ `lo____'yp` World `ha___` that @Variance `ho` render_variance
+ `lo____'yp` Some `hu____` World (" Yoneda Functor into into (" `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output)
+ `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper
+ `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_variables
+ `lo____'yp` Some `hu____` World (") => \n" `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output)
+
+render_declaration = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Space `hv` Unit
+ `lo__'yp` Some `hu_` World `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Opened `hv` Round
+ `lo__'yp` World `ha` render_variable `ha` this @Name `ha` top @Tree
+ `lo__'yp` World `ha` render_declaration_subtree `ha` this @(List `T'I` Tree Name) `ha` sub @Tree
+ `lo__'yp` Some `hu_` World `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Closed `hv` Round
+
+render_declaration_subtree subtree = Empty @List `hu` enter @World
+ `la` Same `hu` (subtree `yokl` Forth `ha` World `ha` render_declaration) `ho'yu` Unit
+ `li` unwrap @(AR) @(List _) subtree
+
+render_variable x = x `yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
+
+prepare_universal_variables symbol namespace = namespace
+ `yokl` Forth `ha` New `ha__` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `ha` symbol
+ `ho_'yuk` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
+ `he'he'hv___` empty @List `yi__` that @(List ASCII)
+
+-- TODO: instead of stateful `prepare_universal_variables` use comonadic `Range`!
+render_universal_variables = at @(Counter Parametric) @Namespace `ho` this
+ `ho'he` prepare_universal_variables T `ho_'yokl` Forth `ha` World `ha` output
 
 -- is @(Namespace `P` Tree Name `P` List Variance `P` List Layer)
-render (These (These (These _namespace functorial) tokens) layers) = enter @World
+render (These (These (These namespace functorial) tokens) layers) = enter @World
  `yuk____` World `hv_____` render_tokens tokens
- `yuk____` World `hv_____` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Colon
- `yuk____` World `hv_____` target functorial
- `yuk____` World `hv_____` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
- `yuk____` World `hv_____` layers `yokl` Forth `ha` World `ha` render_constraint
+ `yuk____` World `hv_____` is @(List ASCII) `hv` " :: forall" `yokl` Forth `ha` World `ha` output
+ `yuk____` World `hv_____` render_universal_variables namespace
+ `yuk____` World `hv_____` output `ha` Caret `hv` by Newline
+ `yuk____` World `hv_____` layers `yokl` Forth `ha` World `ha__` render_constraint
+ `yuk____` World `hv_____` render_declaration functorial
+ `yuk____` World `hv_____` output `ha` Caret `hv` by Newline
