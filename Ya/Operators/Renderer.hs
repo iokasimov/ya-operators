@@ -56,20 +56,20 @@ render_separate_variable = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctua
 
 render_yoneda_functor_constraint = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
  `lo____'yp` World `ha___` that @Variance `ho` render_variance
- `lo____'yp` Some `hu____` World (" Yoneda Functor into into (" `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output)
+ `lo____'yp` Some `hu____` World `ha` print `hv` " Yoneda Functor into into ("
  `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper
  `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_variables
- `lo____'yp` Some `hu____` World (") => \n" `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output)
+ `lo____'yp` Some `hu____` World `ha` print `hv`  ") => \n"
  `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper_constraint
 
 render_wrapper_constraint x = Some `hu` render_wrapper_constraint' x `ho'yu` Unit
   `la_` Some `hu` enter @World
  `ha__` other `ho` this @(Shafted List Name) `ho` (`hd'q` empty) `hv__` x
 
-render_wrapper_constraint' = Some `hu____` " (forall e . Wrapper into (" `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
+render_wrapper_constraint' = Some `hu____` print " (forall e . Wrapper into ("
  `lo____'yp` World `ha____` render_wrapper
  `lo____'yp` World `ha____` render_variables
- `lo____'yp` Some `hu____` World (" e)) => \n" `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output)
+ `lo____'yp` Some `hu____` World `ha` print `hv` " e)) => \n"
 
 render_target variance = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Space `hv` Unit
  `lo__'yp` Some `hu_` World `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Opened `hv` Round
@@ -110,24 +110,26 @@ render_definition tokens = let These popped remains = pop tokens in
  `yuk_____` New `hv____` render_remaining_functors remains
  `he'he'hv_______` " @into @into"
 
+print x = x `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
+
 render (These (These (These namespace functorial) tokens) layers@(calculate_variance -> variance)) = enter @World
  `yuk____` World `hv_____` output `ha` Caret `ha` Newline `hv` Unit
  `yuk____` World `hv_____` render_tokens tokens
  `yuk____` World `hv_____` is @(List ASCII) `hv` " :: forall into" `yokl` Forth `ha` World `ha` output
  `yuk____` World `hv_____` namespace `yi` at `ho` this @(Counter Parametric) `ho'he` pop `ho` that `ho` render_universal_variables T
  `yuk____` World `hv_____` namespace `yi` at `ho` this @(Counter Positioned) `ho'he` pop `ho` that `ho` render_universal_variables I
- `yuk____` World `hv_____` " a o ." `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
+ `yuk____` World `hv_____` print " a o ."
  `yuk____` World `hv_____` output `ha` Caret `hv` by Newline
  `yuk____` World `hv_____` layers `yokl` Forth `ha` World `ha__` render_yoneda_functor_constraint
- `yuk____` World `hv_____` " Contravariant Endo Semi Functor (->) (T'II'I into" `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
+ `yuk____` World `hv_____` print " Contravariant Endo Semi Functor (->) (T'II'I into"
  `yuk____` World `hv_____` render_target variance functorial
- `yuk____` World `hv_____` ") => \n" `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
- `yuk____` World `hv_____` " (forall e ee . Wrapper into (T'I'II into e ee)) => \n" `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
+ `yuk____` World `hv_____` print ") => \n"
+ `yuk____` World `hv_____` print " (forall e ee . Wrapper into (T'I'II into e ee)) => \n"
  `yuk____` World `hv_____` render_target (not variance) functorial
- `yuk____` World `hv_____` " -> into (into a o)" `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
+ `yuk____` World `hv_____` print " -> into (into a o)"
  `yuk____` World `hv_____` render_target variance functorial
  `yuk____` World `hv_____` output `ha` Caret `hv` by Newline
  `yuk____` World `hv_____` render_tokens tokens
- `yuk____` World `hv_____` " = " `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
+ `yuk____` World `hv_____` print " = "
  `yuk____` World `hv_____` render_definition tokens `yi` that @(List ASCII) `yokl` Forth `ha` World `ha` output
  `yuk____` World `hv_____` output `ha` Caret `hv` by Newline
