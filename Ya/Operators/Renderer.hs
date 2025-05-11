@@ -84,10 +84,24 @@ render_universal_variables symbol x = x
  `kyo` Range @(Nonempty List Latin) `ha'yo` (symbol :: Unit `AR` Latin) `ha` is @(Nonempty List Unit)
  `yokl` Prior `ha` World `ha` render_separate_variable
 
+render_remaining_functors tokens = tokens
+ `yokl` Forth `ha` New
+ `ha__'yuk` New `hv` ("`compose` " `yi` is @(List ASCII) `yokl` Prior `ha` New `ha` State `ha` Event `ha` push)
+ `ha__'yuk` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `ha` F `hv` Unit
+ `ha__'yokl` Prior `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower
+ `yuk_` New `hv` ("fai (is " `yi` is @(List ASCII) `yokl` Prior `ha` New `ha` State `ha` Event `ha` push)
+
+render_definition tokens = let These popped remains = pop tokens in
+ popped `yokl'yokl` Check `ha` Prior `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower
+ `yuk_____` New `hv____` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `hv` by Y
+ `yuk_____` New `hv____` is @(List ASCII) `hv` ") `compose` " `yokl` Prior `ha` New `ha` State `ha` Event `ha` push
+ `yuk_____` New `hv____` render_remaining_functors remains
+ `he'he'hv_______` " @into @into"
+
 render (These (These (These namespace functorial) tokens) layers@(calculate_variance -> variance)) = enter @World
  `yuk____` World `hv_____` output `ha` Caret `ha` Newline `hv` Unit
  `yuk____` World `hv_____` render_tokens tokens
- `yuk____` World `hv_____` is @(List ASCII) `hv` " :: forall" `yokl` Forth `ha` World `ha` output
+ `yuk____` World `hv_____` is @(List ASCII) `hv` " :: forall into" `yokl` Forth `ha` World `ha` output
  `yuk____` World `hv_____` namespace `yi` at @(Counter Parametric) `ho` this `ho'he` pop `ho` that `ho` render_universal_variables T
  `yuk____` World `hv_____` namespace `yi` at @(Counter Positioned) `ho` this `ho'he` pop `ho` that `ho` render_universal_variables I
  `yuk____` World `hv_____` " a o ." `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
@@ -96,4 +110,8 @@ render (These (These (These namespace functorial) tokens) layers@(calculate_vari
  `yuk____` World `hv_____` render_target (not variance) functorial
  `yuk____` World `hv_____` " -> into (into a o)" `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
  `yuk____` World `hv_____` render_target variance functorial
+ `yuk____` World `hv_____` output `ha` Caret `hv` by Newline
+ `yuk____` World `hv_____` render_tokens tokens
+ `yuk____` World `hv_____` " = " `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
+ `yuk____` World `hv_____` render_definition tokens `yi` that @(List ASCII) `yokl` Forth `ha` World `ha` output
  `yuk____` World `hv_____` output `ha` Caret `hv` by Newline
