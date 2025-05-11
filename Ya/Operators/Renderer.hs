@@ -18,18 +18,6 @@ calculate_variance layers = layers
 
 -- TODO: how can we can quickly understand, if we return previous state or only a new one? Using some labels/constructors?
 
-render_token x = enter @(State `T'I` List ASCII)
- `yuk__` New (x `yokl` Prior `ha` New `ha` State `ha` Event `ha` push @List `ha` Glyph `ha` Letter `ha` Lower)
- `yuk__` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `ha` Y `hv` Unit
- `yuk__` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Singlequote `hv` Unit
-
-render_tokens x = x
- `yokl` Prior `ha` New `ha` render_token
- `yuk_` New `ha` State `ha` Event `hv` pop @List
- `he'he'hv___` empty @List
- `yi__` that @(List _)
- `yokl` Forth `ha` World `ha` output
-
 render_wrapper x = Some `hu_` State `ha` Event `ha` push @List `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
  `lo_'yp` New `ha` render_position `ha` this @(Singular `T'I` Name) `ha` focus
  `lo_'yp` Empty @List `hu_` New `ha` intro `ha` Glyph `ha` Letter `ha` Upper `hv` by E
@@ -103,18 +91,49 @@ render_remaining_functors tokens = tokens
  `ha__'yokl` Prior `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower
  `yuk_` New `hv` ("fai (identity " `yi` is @(List ASCII) `yokl` Prior `ha` New `ha` State `ha` Event `ha` push)
 
-render_definition tokens = let These popped remains = pop tokens in
- popped `yokl'yokl` Check `ha` Prior `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower
- `yuk_____` New `hv____` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `hv` by Y
- `yuk_____` New `hv____` is @(List ASCII) `hv` ") `compose` " `yokl` Prior `ha` New `ha` State `ha` Event `ha` push
- `yuk_____` New `hv____` render_remaining_functors remains
- `he'he'hv_______` " @into @into"
+-- render_definition tokens = let These popped remains = pop tokens in
+ -- popped `yokl'yokl` Check `ha` Prior `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower
+ -- `yuk_____` New `hv____` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `hv` by Y
+ -- `yuk_____` New `hv____` is @(List ASCII) `hv` ") `compose` " `yokl` Prior `ha` New `ha` State `ha` Event `ha` push
+ -- `yuk_____` New `hv____` render_remaining_functors remains
+ -- `he'he'hv_______` " @into @into"
+
+tokenize :: Scrolling List Name `P` Variance `AR__` Name
+tokenize (These x v) = is
+ `li` focus `ho` this `ho'yu` variant v
+ `lo` other `ho` this `ho'yu` by I
+ `li` is @(Scrolling List Name) x
+ `yi` to @(Nonempty List) @(Scrolling List) @Latin
+
+variant = Contra `hu` by A `la` Co `hu` by O `ha__` is @Variance
+
+tokens :: List Layer `AR___` List ASCII
+tokens layers = layers
+ `yokl` Forth `ha` New
+  `ha__` tokenize `ha` is @(Scrolling List _ `P` Variance)
+  `ho_'yokl` Forth `ha` New `ha` State `ha` Event `ha` push @List `ha` Glyph `ha` Letter `ha` Lower
+  `ho_'yuk` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `hv` by Y
+  `ho_'yuk` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Singlequote
+ `yuk_` New `ha` State `ha` Event `hv` pop @List
+ `he'he'hv___` empty @List `yi__` that @(List ASCII)
+
+-- render_token x = enter @(State `T'I` List ASCII)
+--  `yuk__` New (x `yokl` Prior `ha` New `ha` State `ha` Event `ha` push @List `ha` Glyph `ha` Letter `ha` Lower)
+--  `yuk__` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `ha` Y `hv` Unit
+--  `yuk__` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Singlequote `hv` Unit
+
+-- render_tokens x = x
+--  `yokl` Prior `ha` New `ha` render_token
+--  `yuk_` New `ha` State `ha` Event `hv` pop @List
+--  `he'he'hv___` empty @List
+--  `yi__` that @(List _)
+--  `yokl` Forth `ha` World `ha` output
 
 print x = x `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
 
-render (These (These (These namespace functorial) tokens) layers@(calculate_variance -> variance)) = enter @World
+render (These (These namespace functorial) layers@(calculate_variance -> variance)) = enter @World
  `yuk____` World `hv_____` output `ha` Caret `ha` Newline `hv` Unit
- `yuk____` World `hv_____` render_tokens tokens
+ `yuk____` World `hv_____` print `ha` tokens `hv` layers
  `yuk____` World `hv_____` is @(List ASCII) `hv` " :: forall into" `yokl` Forth `ha` World `ha` output
  `yuk____` World `hv_____` namespace `yi` at `ho` this @(Counter Parametric) `ho'he` pop `ho` that `ho` render_universal_variables T
  `yuk____` World `hv_____` namespace `yi` at `ho` this @(Counter Positioned) `ho'he` pop `ho` that `ho` render_universal_variables I
@@ -129,7 +148,8 @@ render (These (These (These namespace functorial) tokens) layers@(calculate_vari
  `yuk____` World `hv_____` print " -> into (into a o)"
  `yuk____` World `hv_____` render_target variance functorial
  `yuk____` World `hv_____` output `ha` Caret `hv` by Newline
- `yuk____` World `hv_____` render_tokens tokens
+ `yuk____` World `hv_____` print `ha` tokens `hv` layers
  `yuk____` World `hv_____` print " = "
- `yuk____` World `hv_____` render_definition tokens `yi` that @(List ASCII) `yokl` Forth `ha` World `ha` output
+ -- `yuk____` World `hv_____` render_definition `ha` tokens `hv` layers
+        -- `yi` that @(List ASCII) `yokl` Forth `ha` World `ha` output
  `yuk____` World `hv_____` output `ha` Caret `hv` by Newline

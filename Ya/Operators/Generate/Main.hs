@@ -8,13 +8,12 @@ import Ya.Console
 import Ya.Operators.Argument
 import Ya.Operators.Namespace
 import Ya.Operators.Variance
-import Ya.Operators.Tokenizer
 import Ya.Operators.Template
 import Ya.Operators.Renderer
 
 arguments = is @(Nonempty List Arity) ["#", "##"] -- , "###"
 
-positions x = x `kyo` Range `ha` is @(Scrolling List _)
+positions x = x `kyo` Range `ha` is @(Scrolling List Unit)
 
 variances = Both @(P) `ho` to @(Nonempty List)
  `ha__` (`lu` by Contra) `lo` (`lu` by Co)
@@ -27,11 +26,11 @@ templates = Nonempty @List
  `ha_` Next `ho` Item (parameters `yo` intro @(Nonempty List))
  `ha_` Last `ho` Item (parameters `lu` Cross `hv` parameters `yp'yo` Both `ho` to @(Nonempty List))
 
-initial = wrap [Unit] `lu` wrap [Unit] `lu` intro @Tree `ha` intro @(Nonempty List) `hv` by E `lu` empty @List `lu` empty @List
+initial = wrap [Unit] `lu` wrap [Unit] `lu` intro @Tree `ha` intro @(Nonempty List) `hv` by E `lu` empty @List
 
 main = by templates
  `yokl'yokl` Forth `ha` Forth `ha` World
   `ha__` is @(Nonempty List `T'I` Scrolling List Unit `P` Variance)
-   `ho_'yokl` Forth `ha` New `ha` layer
+   `ho_'yokl` Forth `ha` New `ha` layer -- `ha` is @(Scrolling List Unit `P` Variance)
    `ho_'he'he'hv` initial
    `ho_` render `ha` that

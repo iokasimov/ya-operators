@@ -12,7 +12,6 @@ library
    Ya.Operators.Argument
    Ya.Operators.Namespace
    Ya.Operators.Variance
-   Ya.Operators.Tokenizer
    Ya.Operators.Template
    Ya.Operators.Renderer
   build-depends: ya, ya-ascii, ya-world, ya-console

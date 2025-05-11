@@ -5,7 +5,6 @@ import Ya.ASCII
 
 import Ya.Operators.Variance
 import Ya.Operators.Namespace
-import Ya.Operators.Tokenizer
 
 type Layer = Scrolling List Name `P` Variance
 
@@ -24,10 +23,6 @@ inject x tree = Only tree `lu` that @(Shafted List `T'I` Name) `ho'yo` intro @Tr
  `yi` wrap @(AR) @(Scrolling List `T'I` Tree Name) `ho` to @(Nonempty List) `ho` to @List `ho'yo` unwrap @(AR)
  `yi` (\st -> tree `lu` Root (unwrap `ha` this @(Only Name) `hv` x) st)
 
-tokenization = State `ha___` Event `ha_` push @List `ha` tokenize `ho__'ha` Scope `hv` at @(List Token) 
-
--- layer :: Scrolling List Unit `P` Variance `AR___` State `T'I` Namespace `P` Tree Name `P` List Token `P` List Layer `T'I` _
-layer x = enter @(State `T'I` Namespace `P` Tree Name `P` List Token `P` List Layer)
- `yuk___` New `ha` quantification `ha` this `hv` x
+layer x = enter @(State `T'I` Namespace `P` Tree Name `P` List Layer)
+ `yuk___` New `ha` quantification `ha` this `hv` (x :: Scrolling List Unit `P` Variance)
  `yok___` New `ha` substitution `ha` (`lu` that x)
- `yuk___` New `ha` tokenization `hv` x
