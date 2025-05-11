@@ -88,15 +88,15 @@ render_remaining_functors tokens = tokens
  `yokl` Forth `ha` New
  `ha__'yuk` New `hv` ("`compose` " `yi` is @(List ASCII) `yokl` Prior `ha` New `ha` State `ha` Event `ha` push)
  `ha__'yuk` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `ha` F `hv` Unit
- `ha__'yokl` Prior `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower
+ `ha__'yokl` Forth `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower
  `yuk_` New `hv` ("fai (identity " `yi` is @(List ASCII) `yokl` Prior `ha` New `ha` State `ha` Event `ha` push)
 
--- render_definition tokens = let These popped remains = pop tokens in
- -- popped `yokl'yokl` Check `ha` Prior `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower
- -- `yuk_____` New `hv____` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `hv` by Y
- -- `yuk_____` New `hv____` is @(List ASCII) `hv` ") `compose` " `yokl` Prior `ha` New `ha` State `ha` Event `ha` push
- -- `yuk_____` New `hv____` render_remaining_functors remains
- -- `he'he'hv_______` " @into @into"
+render_definition layers = let These popped remains = layers `yo` tokenize `yi` pop in
+ popped `yokl'yokl` Check `ha` Forth `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower
+ `yuk_____` New `hv____` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `hv` by Y
+ `yuk_____` New `hv____` is @(List ASCII) `hv` ") `compose` " `yokl` Prior `ha` New `ha` State `ha` Event `ha` push
+ `yuk_____` New `hv____` render_remaining_functors remains
+ `he'he'hv_______` " @into @into" `yi_______` that @(List ASCII)
 
 tokenize :: Scrolling List Name `P` Variance `AR__` Name
 tokenize (These x v) = is
@@ -150,6 +150,5 @@ render (These (These namespace functorial) layers@(calculate_variance -> varianc
  `yuk____` World `hv_____` output `ha` Caret `hv` by Newline
  `yuk____` World `hv_____` print `ha` tokens `hv` layers
  `yuk____` World `hv_____` print " = "
- -- `yuk____` World `hv_____` render_definition `ha` tokens `hv` layers
-        -- `yi` that @(List ASCII) `yokl` Forth `ha` World `ha` output
+ `yuk____` World `hv_____` render_definition `hv` layers `yokl` Forth `ha` World `ha` output
  `yuk____` World `hv_____` output `ha` Caret `hv` by Newline
