@@ -5,10 +5,8 @@ import Ya.ASCII
 import Ya.World
 import Ya.Console
 
-import Ya.Operators.Variance
-import Ya.Operators.Namespace
+import Ya.Operators.Composer
 
--- calculate_variance :: List Layer `AR__` Variance
 calculate_variance layers = layers
  `yokl` Forth `ha` New `ha` State `ha` Event
  `ha__` that @Variance `ho` compare `ho'ho` auto
@@ -97,7 +95,6 @@ render_definition layers = let These popped remains = layers `yo` tokenize `yi` 
  `yuk_____` New `hv____` render_remaining_functors remains
  `he'he'hv_______` " @into @into" `yi_______` that @(List ASCII)
 
-tokenize :: Scrolling List Name `P` Variance `AR__` Name
 tokenize (These x v) = is
  `li` focus `ho` this `ho'yu` variant v
  `lo` other `ho` this `ho'yu` by I
