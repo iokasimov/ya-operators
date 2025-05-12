@@ -7,9 +7,8 @@ import Ya.Console
 
 import Ya.Operators.Variance
 import Ya.Operators.Namespace
-import Ya.Operators.Template
 
-calculate_variance :: List Layer `AR__` Variance
+-- calculate_variance :: List Layer `AR__` Variance
 calculate_variance layers = layers
  `yokl` Forth `ha` New `ha` State `ha` Event
  `ha__` that @Variance `ho` compare `ho'ho` auto
@@ -107,7 +106,6 @@ tokenize (These x v) = is
 
 variant = Contra `hu` by A `la` Co `hu` by O `ha__` is @Variance
 
-tokens :: List Layer `AR___` List ASCII
 tokens layers = layers
  `yokl` Forth `ha` New
   `ha__` tokenize `ha` is @(Scrolling List _ `P` Variance)
@@ -116,18 +114,6 @@ tokens layers = layers
   `ho_'yuk` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Singlequote
  `yuk_` New `ha` State `ha` Event `hv` pop @List
  `he'he'hv___` empty @List `yi__` that @(List ASCII)
-
--- render_token x = enter @(State `T'I` List ASCII)
---  `yuk__` New (x `yokl` Prior `ha` New `ha` State `ha` Event `ha` push @List `ha` Glyph `ha` Letter `ha` Lower)
---  `yuk__` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `ha` Y `hv` Unit
---  `yuk__` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Singlequote `hv` Unit
-
--- render_tokens x = x
---  `yokl` Prior `ha` New `ha` render_token
---  `yuk_` New `ha` State `ha` Event `hv` pop @List
---  `he'he'hv___` empty @List
---  `yi__` that @(List _)
---  `yokl` Forth `ha` World `ha` output
 
 print x = x `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
 

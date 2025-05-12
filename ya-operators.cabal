@@ -9,10 +9,8 @@ cabal-version: >=1.10
 
 library
   exposed-modules:
-   Ya.Operators.Argument
    Ya.Operators.Namespace
    Ya.Operators.Variance
-   Ya.Operators.Template
    Ya.Operators.Renderer
   build-depends: ya, ya-ascii, ya-world, ya-console
   default-extensions: AllowAmbiguousTypes, DataKinds, ConstraintKinds, ExistentialQuantification, ExtendedDefaultRules, GADTs, QuantifiedConstraints, InstanceSigs, FlexibleContexts, FlexibleInstances, KindSignatures, LiberalTypeSynonyms, LambdaCase, FunctionalDependencies, MultiParamTypeClasses, NoImplicitPrelude, OverloadedStrings, OverloadedLists, PackageImports, PatternSynonyms, PolyKinds, RankNTypes, ViewPatterns, ScopedTypeVariables, StandaloneDeriving, TupleSections, TypeApplications, TypeFamilies, TypeFamilyDependencies, TypeOperators, DerivingVia
