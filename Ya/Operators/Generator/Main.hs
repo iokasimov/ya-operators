@@ -9,13 +9,14 @@ import Ya.Operators.Renderer
 
 type Arity = Nonempty List Unit
 
+arrangements = arguments
+ `yok_` Plane `ha` positions
+ `yok_` Plane `ha` variances
+
 arguments = is @(Nonempty List Arity) ["#", "##"]
 
-parameters = arguments
- `yok` Plane `ha` positions
- `yok` Plane `ha` variances
-
-positions arity = arity `kyo` Range @(Scrolling List Unit)
+positions arity = arity
+ `kyo` Range @(Scrolling List Unit)
 
 variances = Both @(P) `ho` to @(Nonempty List)
  `ha__` (`lu` by Contra) `lo` (`lu` by Co)
@@ -25,8 +26,11 @@ operator template = template
  `he'he'hv___` wrap [Unit] `lu` wrap [Unit] `lu` intro @Tree [by E] `lu` []
  `yi__` render `ha` that @(Namespace `P` Tree Name `P` List Layer)
 
-templates = Nonempty @List
- `ha_` Next `ho` Item (parameters `yo` intro @(Nonempty List))
- `ha_` Last `ho` Item (parameters `lu` Cross `hv` parameters `yp'yo` Both `ho` to @(Nonempty List))
-
-main = by templates `yokl'yokl` Forth `ha` Forth `ha` World `ha` operator
+main = enter @World
+ `yuk___` World `hv____` arrangements
+  `yo` intro @(Nonempty List)
+  `yokl` Forth `ha` Await `ha` operator
+ `yuk___` World `hv____` arrangements
+  `lu` Cross `hv` (arrangements `yo` intro @(Nonempty List))
+  `yp'yo'hd` push @(Nonempty List) `ho'ho` that
+  `yokl` Forth `ha` Await `ha` operator
