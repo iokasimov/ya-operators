@@ -26,11 +26,40 @@ operator template = template
  `he'he'hv___` wrap [Unit] `lu` wrap [Unit] `lu` intro @Tree [by E] `lu` []
  `yi__` render `ha` that @(Namespace `P` Tree Name `P` List Layer)
 
+combinations template = arrangements `lu` Cross `hv` template
+ `yp'yo'hd` push @(Nonempty List) `ho'ho` that `ho'ho` intro @(Nonempty List)
+
 main = enter @World
  `yuk___` World `hv____` arrangements
-  `yo` intro @(Nonempty List)
-  `yokl` Forth `ha` Await `ha` operator
+  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
+  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
  `yuk___` World `hv____` arrangements
-  `lu` Cross `hv` (arrangements `yo` intro @(Nonempty List))
-  `yp'yo'hd` push @(Nonempty List) `ho'ho` that
-  `yokl` Forth `ha` Await `ha` operator
+  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
+  `yok_` Plane `ha` combinations
+  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
+ `yuk___` World `hv____` arrangements
+  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
+  `yok_` Plane `ha` combinations
+  `yok_` Plane `ha` combinations
+  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
+ `yuk___` World `hv____` arrangements
+  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
+  `yok_` Plane `ha` combinations
+  `yok_` Plane `ha` combinations
+  `yok_` Plane `ha` combinations
+  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
+ `yuk___` World `hv____` arrangements
+  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
+  `yok_` Plane `ha` combinations
+  `yok_` Plane `ha` combinations
+  `yok_` Plane `ha` combinations
+  `yok_` Plane `ha` combinations
+  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
+ `yuk___` World `hv____` arrangements
+  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
+  `yok_` Plane `ha` combinations
+  `yok_` Plane `ha` combinations
+  `yok_` Plane `ha` combinations
+  `yok_` Plane `ha` combinations
+  `yok_` Plane `ha` combinations
+  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
