@@ -48,18 +48,3 @@ main = enter @World
   `yok_` Plane `ha` combinations
   `yok_` Plane `ha` combinations
   `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
- `yuk___` World `hv____` arrangements
-  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
-  `yok_` Plane `ha` combinations
-  `yok_` Plane `ha` combinations
-  `yok_` Plane `ha` combinations
-  `yok_` Plane `ha` combinations
-  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
- `yuk___` World `hv____` arrangements
-  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
-  `yok_` Plane `ha` combinations
-  `yok_` Plane `ha` combinations
-  `yok_` Plane `ha` combinations
-  `yok_` Plane `ha` combinations
-  `yok_` Plane `ha` combinations
-  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
