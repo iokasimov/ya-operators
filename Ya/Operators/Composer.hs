@@ -3,6 +3,8 @@ module Ya.Operators.Composer where
 import Ya
 import Ya.ASCII
 
+type Arity = Nonempty List Unit
+
 type Variance = Unit `S` Unit
 
 pattern Contra e = This e
