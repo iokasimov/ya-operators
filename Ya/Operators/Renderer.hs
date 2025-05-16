@@ -32,28 +32,33 @@ render_variance = is @(Nonempty List ASCII)
  `ho_'yokl` Forth `ha` World `ha` output
  `ha__` Contra `hu` "Contravariant" `la` Co `hu` "Covariant"
 
-render_variables = intro @World
+render_wrapper_variables = intro @World
  `lo____'yp` World `ha____` focus `ho` this `ho'he` is `ho__'yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
  `lo____'yp` World `ha____` other `ho` this `ho___'yokl` Forth `ha` World `ha` render_separate_variable
 
 render_separate_variable = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
  `lo____'yp` World `ha__'yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
 
-render_yoneda_functor_constraint = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
- `lo____'yp` World `ha___` that @Variance `ho` render_variance
- `lo____'yp` Some `hu____` World `ha` print `hv` " Yoneda Functor into into ("
- `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper
- `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_variables
- `lo____'yp` Some `hu____` World `ha` print `hv`  ") => \n"
- `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper_constraint
+pattern Yonedaic e = This e
+pattern Ordinary e = That e
 
-render_wrapper_constraint x = Some `hu` render_wrapper_constraint' x `ho'yu` Unit
+-- render_yoneda_functor_constraint = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
+ -- `lo____'yp` World `ha___` that @Variance `ho` render_variance
+ -- `lo____'yp` Some `hu____` World `ha` print `hv` " Yoneda Functor from into ("
+ -- `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper
+ -- `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper_variables
+ -- `lo____'yp` Some `hu____` World `ha` print `hv`  ") => \n"
+ -- `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper_constraint
+
+render_wrapper_constraint cat x = Some `hu` render_wrapper_constraint' cat x `ho'yu` Unit
   `la_` Some `hu` enter @World
  `ha__` other `ho` this @(Shafted List Name) `ho` (`hd'q` empty) `hv__` x
 
-render_wrapper_constraint' = Some `hu____` print " (forall e . Wrapper into ("
+render_wrapper_constraint' cat = Some `hu` print " (forall e . Wrapper "
+ `lo____'yp` Some `hu_` World `hv` print cat
+ `lo____'yp` Some `hu_` World `hv` print " ("
  `lo____'yp` World `ha____` render_wrapper
- `lo____'yp` World `ha____` render_variables
+ `lo____'yp` World `ha____` render_wrapper_variables
  `lo____'yp` Some `hu____` World `ha` print `hv` " e)) => \n"
 
 render_target variance = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `ha` Space `hv` Unit
@@ -82,18 +87,22 @@ render_universal_variables symbol x = x
  `yokl` Prior `ha` World `ha` render_separate_variable
 
 render_remaining_functors tokens = tokens
- `yokl` Forth `ha` New
- `ha__'yuk` New `hv` ("`compose` " `yi` is @(List ASCII) `yokl` Prior `ha` New `ha` State `ha` Event `ha` push)
- `ha__'yuk` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `ha` F `hv` Unit
- `ha__'yokl` Forth `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower
- `yuk_` New `hv` ("fai (identity " `yi` is @(List ASCII) `yokl` Prior `ha` New `ha` State `ha` Event `ha` push)
+ `yokl` Prior `ha` New
+ `ha__'yuk` New `hv` (" `compose` " `yi` is @(List ASCII) `yokl` Prior `ha` New `ha` State `ha` Event `ha` push)
+ `ha__` render_remaining_functor_token
+ `yuk_` New `hv` ("fai (identity" `yi` is @(List ASCII) `yokl` Prior `ha` New `ha` State `ha` Event `ha` push)
+
+render_remaining_functor_token x = enter @(State `T'I` List ASCII)
+ `yuk____` New `hv____` " @from" `yi` is @(List ASCII) `yokl` Prior `ha` New `ha` State `ha` Event `ha` push
+ `yuk____` New `hv____` x `yokl` Prior `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower
+ `yuk____` New `hv____` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `ha` F `hv` Unit
 
 render_definition layers = let These popped remains = layers `yo` tokenize `yi` pop in
- popped `yokl'yokl` Check `ha` Forth `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower
+ popped `yokl'yokl` Check `ha` Prior `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower
  `yuk_____` New `hv____` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `hv` by Y
  `yuk_____` New `hv____` is @(List ASCII) `hv` ") `compose` " `yokl` Prior `ha` New `ha` State `ha` Event `ha` push
  `yuk_____` New `hv____` render_remaining_functors remains
- `he'he'hv_______` " @into @into" `yi_______` that @(List ASCII)
+ `he'he'hv_______` " @from @into" `yi_______` that @(List ASCII)
 
 tokenize (These x v) = is
  `li` focus `ho` this `ho'yu` variant v
@@ -104,9 +113,9 @@ tokenize (These x v) = is
 variant = Contra `hu` by A `la` Co `hu` by O `ha__` is @Variance
 
 tokens layers = layers
- `yokl` Forth `ha` New
+ `yokl` Prior `ha` New
   `ha__` tokenize `ha` is @(Scrolling List _ `P` Variance)
-  `ho_'yokl` Forth `ha` New `ha` State `ha` Event `ha` push @List `ha` Glyph `ha` Letter `ha` Lower
+  `ho_'yokl` Prior `ha` New `ha` State `ha` Event `ha` push @List `ha` Glyph `ha` Letter `ha` Lower
   `ho_'yuk` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `hv` by Y
   `ho_'yuk` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Singlequote
  `yuk_` New `ha` State `ha` Event `hv` pop @List
@@ -114,24 +123,46 @@ tokens layers = layers
 
 print x = x `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
 
+render_functor_constraint prefix = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
+ `lo____'yp` World `ha___` that @Variance `ho` render_variance
+ `lo____'yp` Some `hu____` World `ha` print `hv___` Yonedaic `hu` " Yoneda" `la` Ordinary `hu` " Endo Semi" `li` prefix
+ `lo____'yp` Some `hu____` World `ha` print `hv` " Functor from"
+ `lo____'yp` Some `hu____` World `ha` print `hv___` Yonedaic `hu` " into (" `la` Ordinary `hu` " (" `li` prefix
+ `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper
+ `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper_variables
+ `lo____'yp` Some `hu____` World `ha` print `hv`  ") => \n"
+ `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper_constraint (Yonedaic `hu` "into" `la` Ordinary `hu` "from" `li`  prefix)
+
+reverse_layers layers = layers
+ `yokl` Forth `ha` New `ha` State `ha` Event `ha` push @List
+ `he'he'hv___` empty @List
+ `yi__` that @(List _)
+
+-- TODO: this code is terrible! I should rewrite it ASAP.
+
 render (These (These namespace functorial) layers@(calculate_variance -> variance)) = enter @World
- `yuk____` World `hv_____` output `ha` Caret `ha` Newline `hv` Unit
- `yuk____` World `hv_____` print `ha` tokens `hv` layers
- `yuk____` World `hv_____` is @(List ASCII) `hv` " :: forall into" `yokl` Forth `ha` World `ha` output
- `yuk____` World `hv_____` namespace `yi` at `ho` this @(Counter Parametric) `ho'he` pop `ho` that `ho` render_universal_variables T
- `yuk____` World `hv_____` namespace `yi` at `ho` this @(Counter Positioned) `ho'he` pop `ho` that `ho` render_universal_variables I
- `yuk____` World `hv_____` print " a o ."
- `yuk____` World `hv_____` output `ha` Caret `hv` by Newline
- `yuk____` World `hv_____` layers `yokl` Forth `ha` World `ha__` render_yoneda_functor_constraint
- `yuk____` World `hv_____` print " Contravariant Endo Semi Functor (->) (T'II'I into"
- `yuk____` World `hv_____` render_target variance functorial
- `yuk____` World `hv_____` print ") => \n"
- `yuk____` World `hv_____` print " (forall e ee . Wrapper into (T'I'II into e ee)) => \n"
- `yuk____` World `hv_____` render_target (not variance) functorial
- `yuk____` World `hv_____` print " -> into (into a o)"
- `yuk____` World `hv_____` render_target variance functorial
- `yuk____` World `hv_____` output `ha` Caret `hv` by Newline
- `yuk____` World `hv_____` print `ha` tokens `hv` layers
- `yuk____` World `hv_____` print " = "
- `yuk____` World `hv_____` render_definition `hv` layers `yokl` Forth `ha` World `ha` output
- `yuk____` World `hv_____` output `ha` Caret `hv` by Newline
+ `yuk_____` World `hv_____` output `ha` Caret `ha` Newline `hv` Unit
+ `yuk_____` World `hv_____` print `ha` tokens `hv` layers
+ `yuk_____` World `hv_____` is @(List ASCII) `hv` " :: forall from into" `yokl` Forth `ha` World `ha` output
+ `yuk_____` World `hv_____` namespace `yi` at `ho` this @(Counter Parametric) `ho'he` pop `ho` that `ho` render_universal_variables T
+ `yuk_____` World `hv_____` namespace `yi` at `ho` this @(Counter Positioned) `ho'he` pop `ho` that `ho` render_universal_variables I
+ `yuk_____` World `hv_____` print " a o ."
+ `yuk_____` World `hv_____` output `ha` Caret `hv` by Newline
+ -- TODO: I don't like the fact that `layers` is a `List` - it should be a `Nonempty List` (or we should iterate over `Scrolling Tree` instead)
+ `yuk_____` World `hv______` Some `hu__` print "Impossible happened!" `yu` Unit
+  `la____` Only `ha` this `ha` top @(Nonempty List) `ho__'yokl` Forth `ha` Await `ha_` render_functor_constraint `hv` by Yonedaic
+  `lo__'yp` this `ha` sub @(Nonempty List) `ho__'yokl'yokl` Check `ha` Forth `ha` Await `ha_` render_functor_constraint `hv` by Ordinary `ho__` Await
+  `ho___'yu` Unit
+  `li____` layers
+ `yuk_____` World `hv_____` print " Contravariant Endo Semi Functor (->) (T'II'I into"
+ `yuk_____` World `hv_____` render_target variance functorial
+ `yuk_____` World `hv_____` print ") => \n"
+ `yuk_____` World `hv_____` print " (forall e ee . Wrapper into (T'I'II from e ee)) => \n"
+ `yuk_____` World `hv_____` render_target (not variance) functorial
+ `yuk_____` World `hv_____` print " -> into (from a o)"
+ `yuk_____` World `hv_____` render_target variance functorial
+ `yuk_____` World `hv_____` output `ha` Caret `hv` by Newline
+ `yuk_____` World `hv_____` print `ha` tokens `hv` layers
+ `yuk_____` World `hv_____` print " = "
+ `yuk_____` World `hv_____` render_definition `hv` layers `yokl` Forth `ha` World `ha` output
+ `yuk_____` World `hv_____` output `ha` Caret `hv` by Newline

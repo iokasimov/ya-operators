@@ -2,9 +2,8 @@
 
 ![_](cover.png)
 
-
 - [x] Generate complete valid operators code
-- [ ] Source and target categories should be different
+- [x] Source and target categories should be different
 - [ ] Generate operators with source Kleisli morphisms
 - [ ] Generate operators with target Kleisli morphisms
 - [ ] Generate longer versions of the same definition

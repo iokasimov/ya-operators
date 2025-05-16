@@ -33,7 +33,6 @@ main = enter @World
  `yuk___` World `hv____` arrangements
   `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
   `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
-
  `yuk___` World `hv____` arrangements
   `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
   `yok_` Plane `ha` combinations
