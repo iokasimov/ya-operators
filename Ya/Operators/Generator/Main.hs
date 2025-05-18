@@ -16,15 +16,24 @@ arrangements = arguments
 positions arity = arity
  `kyo` Range @(Position Unit)
 
-variances = Both @(P) `ho` to @(Nonempty List)
- `ha__` (`lu` by Contra) `lo` (`lu` by Co)
+variances = to @(Nonempty List)
+ `ha__` Both @(P) @(Position Unit `P` Variance)
+ `ha__` (`lu` Contra Unit)
+   `lo` (`lu` Co Unit)
+ `ha__` is @(Position Unit)
 
--- TODO: add Kleisli markers to a rightmost `template`
--- TODO: add Terminal object markers to a rightmost `template`
-combinations template = arrangements
- `lu` Cross `hv` template
+deviation = to @(Nonempty List)
+ `ha__` Both @(P) @(Position Unit `P` Morphism)
+ `ha__` (`yio` is @Variance `ho` (`lu` by Flat))
+   `lo` (`yio` is @Variance `ho` (`lu` by Rise))
+ `ha__` is @(Position Unit `P` Variance)
+
+flattened x = x `yio` is @Variance `ho` (`lu` by Flat)
+
+combinations affix template =
+ affix `lu` Cross `hv` template
  `yp'yo'hd` push @(Nonempty List)
- `ho'ho` that @(Nonempty List `T'I` Position Unit `P` Variance)
+ `ho'ho` that @(Nonempty List _)
  `ho'ho` intro @(Nonempty List)
 
 operator template = template
@@ -32,22 +41,29 @@ operator template = template
  `he'he'hv___` wrap [Unit] `lu` wrap [Unit] `lu` intro @Tree [by E] `lu` []
  `yi__` render `ha` that @(Namespace `P` Tree Name `P` List Layer)
 
+generations = arrangements
+ `yo` flattened
+ `ho` intro @(Nonempty List)
+ `ho` intro @(Nonempty List)
+
+determinant = arrangements
+ `yok` Plane `ha` deviation
+
 main = enter @World
- `yuk___` World `hv____` arrangements
-  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
+ `yuk___` World `hv____` generations
   `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
- `yuk___` World `hv____` arrangements
-  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
-  `yok_` Plane `ha` combinations
+ `yuk___` World `hv____` generations
+  `yok_` Plane `ha` combinations determinant
   `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
- `yuk___` World `hv____` arrangements
-  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
-  `yok_` Plane `ha` combinations
-  `yok_` Plane `ha` combinations
-  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
- `yuk___` World `hv____` arrangements
-  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
-  `yok_` Plane `ha` combinations
-  `yok_` Plane `ha` combinations
-  `yok_` Plane `ha` combinations
-  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
+
+ -- `yuk___` World `hv____` (arrangements `yo` flattened)
+ --  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
+ --  `yok_` Plane `ha` combinations (arrangements `yo` flattened)
+ --  `yok_` Plane `ha` combinations (arrangements `yo` flattened)
+ --  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
+ -- `yuk___` World `hv____` (arrangements `yo` flattened)
+ --  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
+ --  `yok_` Plane `ha` combinations (arrangements `yo` flattened)
+ --  `yok_` Plane `ha` combinations (arrangements `yo` flattened)
+ --  `yok_` Plane `ha` combinations (arrangements `yo` flattened)
+ --  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator

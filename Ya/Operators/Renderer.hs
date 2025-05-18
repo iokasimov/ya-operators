@@ -9,7 +9,7 @@ import Ya.Operators.Composer
 
 calculate_variance layers = layers
  `yokl` Forth `ha` New `ha` State `ha` Event
- `ha__` that @Variance `ho` compare `ho'ho` auto
+ `ha__` that @Morphism `ho` this @Variance `ho` compare `ho'ho` auto
  `he'he'hv___` by Co
  `yi__` that @Variance
 
@@ -104,17 +104,23 @@ render_definition layers = let These popped remains = layers `yo` tokenize `yi` 
  `yuk_____` New `hv____` render_remaining_functors remains
  `he'he'hv_______` " @from @into" `yi_______` that @(List ASCII)
 
-tokenize (These x v) = is
+tokenize (These p (These v k)) = is
  `li` focus `ho` this `ho'yu` variant v
  `lo` other `ho` this `ho'yu` by I
- `li` is @(Position Name) x
+ `li` is @(Position Name) p
  `yi` to @(Nonempty List) @Position @Latin
+ `yi` maybe_kleisli k
+
+maybe_kleisli k x =
+ None `hu` x `la_` Some `hu` source_kleisli x `li_` k
+
+source_kleisli = that @Name `ha_` push `hv` K Unit
 
 variant = Contra `hu` by A `la` Co `hu` by O `ha__` is @Variance
 
 tokens layers = layers
  `yokl` Prior `ha` New
-  `ha__` tokenize `ha` is @(Position _ `P` Variance)
+  `ha__` tokenize `ha` is @(Position _ `P` Morphism)
   `ho_'yokl` Prior `ha` New `ha` State `ha` Event `ha` push @List `ha` Glyph `ha` Letter `ha` Lower
   `ho_'yuk` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `hv` by Y
   `ho_'yuk` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Singlequote
@@ -124,7 +130,7 @@ tokens layers = layers
 print x = x `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
 
 render_functor_constraint prefix = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
- `lo____'yp` World `ha___` that @Variance `ho` render_variance
+ `lo____'yp` World `ha___` that @Morphism `ho` this @Variance `ho` render_variance
  `lo____'yp` Some `hu____` World `ha` print `hv___` Yonedaic `hu` " Yoneda" `la` Ordinary `hu` " Endo Semi" `li` prefix
  `lo____'yp` Some `hu____` World `ha` print `hv` " Functor from"
  `lo____'yp` Some `hu____` World `ha` print `hv___` Yonedaic `hu` " into (" `la` Ordinary `hu` " (" `li` prefix
