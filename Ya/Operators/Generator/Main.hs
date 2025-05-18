@@ -14,15 +14,18 @@ arrangements = arguments
  `yok_` Plane `ha` variances
 
 positions arity = arity
- `kyo` Range @(Scrolling List Unit)
+ `kyo` Range @(Position Unit)
 
 variances = Both @(P) `ho` to @(Nonempty List)
  `ha__` (`lu` by Contra) `lo` (`lu` by Co)
 
+-- TODO: add Kleisli markers to a rightmost `template`
+-- TODO: add Terminal object markers to a rightmost `template`
 combinations template = arrangements
  `lu` Cross `hv` template
  `yp'yo'hd` push @(Nonempty List)
- `ho'ho` that `ho'ho` intro @(Nonempty List)
+ `ho'ho` that @(Nonempty List `T'I` Position Unit `P` Variance)
+ `ho'ho` intro @(Nonempty List)
 
 operator template = template
  `yokl` Forth `ha` New `ha` layer

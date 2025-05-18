@@ -10,6 +10,8 @@ type Variance = Unit `S` Unit
 pattern Contra e = This e
 pattern Co e = That e
 
+type Position = Scrolling List
+
 compare current result = Some `hu` by Contra `la` Some `hu` by Co `li` current `hd'q` result
 
 type Name = Nonempty List Latin
@@ -25,17 +27,16 @@ type Counter label = label `L` Nonempty List `T'I` Unit
 
 type Namespace = Counter Positioned `P` Counter Parametric
 
-type Layer = Scrolling List Name `P` Variance
+type Layer = Position Name `P` Variance
 
-layer x = intro @(State `T'I` Namespace `P` Tree Name `P` List Layer) `ha` this `hv` x
- `yok_____` New `ha` State `ha___` Event `ha_` variable T focus `ho__'ha` Scope `hv` at @(Counter Parametric) `ho_'he` Scope `hv` it
+layer x = enter @(State `T'I` Namespace `P` Tree Name `P` List Layer)
+ `yuk_____` New `ha` State `ha___` Event `ha_` variable T focus `ho__'ha` Scope `hv` at @(Counter Parametric) `ho_'he` Scope `hv` it
  `lo____'yp` New `ha` State `ha___` Event `ha_` variable I other `ho__'ha` Scope `hv` at @(Counter Positioned) `ho_'he` Scope `hv` it
- `yok_____` New `ha` State `ha___` Event `ha_` inject `ha` this `ho_'ha` Scope `hv` at @(Tree Name)
- `lo____'yp` New `ha` State `ha___` Event `ha_` push @List `ha'yoi` wrap @(AR) `ho_'ha` Scope `hv` at @(List Layer)
- `ha______` (`lu` that `ha` is @(Scrolling List Unit `P` Variance) `hv` x)
+ `hv______` this @(Position Unit) `hv` x
+ `yok_____` New `ha` State `ha___` Event `ha_` wrap @(AR) `ho'hj` (wrap @(AR) `ho` Aloft @Position `ho` to @Tree) `ho'ho` get `ho_'ha` Scope `hv` at @(Tree Name)
+ `lo____'yp` New `ha` State `ha___` Event `ha_` wrap @(AR) `ho` (`lu` that @Variance `hv` x) `ho` push @List `ho_'ha` Scope `hv` at @(List Layer)
 
 variable symbol attr = quant symbol `ha` this `ha` attr `ho'he'he` is
 
-inject x tree = Only tree `lu` that @(Shafted List `T'I` Name) `ho'yo` intro @Tree `hv` x
- `yi` wrap @(AR) @(Scrolling List `T'I` Tree Name) `ho` to @(Nonempty List) `ho` to @List `ho'yo` unwrap @(AR)
- `yi` (\st -> tree `lu` Root (unwrap `ha` this @(Only Name) `hv` x) st)
+-- `lo'lu`
+-- `lu'lo`

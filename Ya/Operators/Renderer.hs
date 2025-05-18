@@ -21,7 +21,7 @@ render_wrapper x = Some `hu_` State `ha` Event `ha` push @List `ha` Glyph `ha` S
     `la` New `ha` render_position `ha` is @(Nonempty List _)
    `ha_` to @List `ha` this @(Shafted List `T'I` Name) `ha` other
  `lo_'yp` Some `hu_` New `ha` State `ha` Event `ha` push @List `ha` Glyph `ha` Letter `ha` Upper `hv` by T
- `li_` quant I x `he'he'hv` intro @(Nonempty List) Unit `yi` this @(Scrolling List `T'I` _) `he'he'hv__` empty @List
+ `li_` quant I x `he'he'hv` intro @(Nonempty List) Unit `yi` this @(Position _) `he'he'hv__` empty @List
  `yi_` that @(List ASCII) `ho_'yokl` Forth `ha` World `ha` output
 
 render_position name = name
@@ -45,10 +45,10 @@ pattern Ordinary e = That e
 -- render_yoneda_functor_constraint = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
  -- `lo____'yp` World `ha___` that @Variance `ho` render_variance
  -- `lo____'yp` Some `hu____` World `ha` print `hv` " Yoneda Functor from into ("
- -- `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper
- -- `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper_variables
+ -- `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper
+ -- `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper_variables
  -- `lo____'yp` Some `hu____` World `ha` print `hv`  ") => \n"
- -- `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper_constraint
+ -- `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper_constraint
 
 render_wrapper_constraint cat x = Some `hu` render_wrapper_constraint' cat x `ho'yu` Unit
   `la_` Some `hu` enter @World
@@ -73,7 +73,7 @@ render_target_subtree variance subtree = Empty @List `hu` enter @World
 
 render_variable x = x `yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
 
--- TODO: This conditional is not elegant and error prone, we do it because we loose `Scrolling List` structure due to convertation to `Tree`
+-- TODO: This conditional is not elegant and error prone, we do it because we loose `Position` structure due to convertation to `Tree`
 render_target_variable variance x = that @Name
  `la` Some `hu` prepare_variance_target variance
  `li` [by E] `hd'q` x
@@ -107,14 +107,14 @@ render_definition layers = let These popped remains = layers `yo` tokenize `yi` 
 tokenize (These x v) = is
  `li` focus `ho` this `ho'yu` variant v
  `lo` other `ho` this `ho'yu` by I
- `li` is @(Scrolling List Name) x
- `yi` to @(Nonempty List) @(Scrolling List) @Latin
+ `li` is @(Position Name) x
+ `yi` to @(Nonempty List) @Position @Latin
 
 variant = Contra `hu` by A `la` Co `hu` by O `ha__` is @Variance
 
 tokens layers = layers
  `yokl` Prior `ha` New
-  `ha__` tokenize `ha` is @(Scrolling List _ `P` Variance)
+  `ha__` tokenize `ha` is @(Position _ `P` Variance)
   `ho_'yokl` Prior `ha` New `ha` State `ha` Event `ha` push @List `ha` Glyph `ha` Letter `ha` Lower
   `ho_'yuk` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `hv` by Y
   `ho_'yuk` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Singlequote
@@ -128,15 +128,10 @@ render_functor_constraint prefix = Some `hu_` output `ha` Glyph `ha` Symbol `ha`
  `lo____'yp` Some `hu____` World `ha` print `hv___` Yonedaic `hu` " Yoneda" `la` Ordinary `hu` " Endo Semi" `li` prefix
  `lo____'yp` Some `hu____` World `ha` print `hv` " Functor from"
  `lo____'yp` Some `hu____` World `ha` print `hv___` Yonedaic `hu` " into (" `la` Ordinary `hu` " (" `li` prefix
- `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper
- `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper_variables
+ `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper
+ `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper_variables
  `lo____'yp` Some `hu____` World `ha` print `hv`  ") => \n"
- `lo____'yp` World `ha___` this @(Scrolling List Name) `ho` render_wrapper_constraint (Yonedaic `hu` "into" `la` Ordinary `hu` "from" `li`  prefix)
-
-reverse_layers layers = layers
- `yokl` Forth `ha` New `ha` State `ha` Event `ha` push @List
- `he'he'hv___` empty @List
- `yi__` that @(List _)
+ `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper_constraint (Yonedaic `hu` "into" `la` Ordinary `hu` "from" `li`  prefix)
 
 -- TODO: this code is terrible! I should rewrite it ASAP.
 
