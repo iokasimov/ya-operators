@@ -41,20 +41,23 @@ operator template = template
  `he'he'hv___` wrap [Unit] `lu` wrap [Unit] `lu` intro @Tree [by E] `lu` []
  `yi__` render `ha` that @(Namespace `P` Tree Name `P` List Layer)
 
-generations = arrangements
+elementary = arrangements
  `yo` flattened
- `ho` intro @(Nonempty List)
- `ho` intro @(Nonempty List)
 
 determinant = arrangements
  `yok` Plane `ha` deviation
 
+genesis templates = templates
+ `yo` intro @(Nonempty List)
+ `ho` intro @(Nonempty List)
+
 main = enter @World
- `yuk___` World `hv____` generations
+ `yuk___` World `hv____` determinant `yi` genesis
   `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
- `yuk___` World `hv____` generations
-  `yok_` Plane `ha` combinations determinant
-  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
+
+ -- `yuk___` World `hv____` genesis
+ --  `yok_` Plane `ha` combinations determinant
+ --  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
 
  -- `yuk___` World `hv____` (arrangements `yo` flattened)
  --  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)

@@ -13,6 +13,11 @@ calculate_variance layers = layers
  `he'he'hv___` by Co
  `yi__` that @Variance
 
+calculate_deviation layers = layers
+ `yokl` Prior `ha` Check
+ `ha__` Continue `la` Interrupt 
+ `ha__` that @Morphism `ho` that @Deviation
+
 -- TODO: how can we can quickly understand, if we return previous state or only a new one? Using some labels/constructors?
 
 render_wrapper x = Some `hu_` State `ha` Event `ha` push @List `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
@@ -90,7 +95,7 @@ render_remaining_functors tokens = tokens
  `yokl` Prior `ha` New
  `ha__'yuk` New `hv` (" `compose` " `yi` is @(List ASCII) `yokl` Prior `ha` New `ha` State `ha` Event `ha` push)
  `ha__` render_remaining_functor_token
- `yuk_` New `hv` ("fai (identity" `yi` is @(List ASCII) `yokl` Prior `ha` New `ha` State `ha` Event `ha` push)
+ `yuk_` New `hv` ("fai (identity @(AR)" `yi` is @(List ASCII) `yokl` Prior `ha` New `ha` State `ha` Event `ha` push)
 
 render_remaining_functor_token x = enter @(State `T'I` List ASCII)
  `yuk____` New `hv____` " @from" `yi` is @(List ASCII) `yokl` Prior `ha` New `ha` State `ha` Event `ha` push
@@ -109,12 +114,15 @@ tokenize (These p (These v k)) = is
  `lo` other `ho` this `ho'yu` by I
  `li` is @(Position Name) p
  `yi` to @(Nonempty List) @Position @Latin
- `yi` maybe_kleisli k
+ `yi` maybe_source_kleisli k
 
-maybe_kleisli k x =
- None `hu` x `la_` Some `hu` source_kleisli x `li_` k
+maybe_source_kleisli kleisli x =
+ None `hu` x `la` Some `hu` source_kleisli x `li` kleisli
 
-source_kleisli = that @Name `ha_` push `hv` K Unit
+source_kleisli x = x
+ `yokl` Prior `ha` New `ha` State `ha` Event `ha` push
+ `he'he'hv___` intro `hv` by K
+ `yi__` that @Name
 
 variant = Contra `hu` by A `la` Co `hu` by O `ha__` is @Variance
 
@@ -129,7 +137,27 @@ tokens layers = layers
 
 print x = x `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
 
-render_functor_constraint prefix = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
+render_source_kleisli_functor_constraint =
+ Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
+ `lo____'yp` World `ha___` that @Variance `ho` render_variance
+ `lo____'yp` Some `hu____` World `ha` print `hv` " Endo Transformation Functor into (("
+ `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper
+ `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper_variables
+ `lo____'yp` Some `hu____` World `ha` print `hv`  ") `T'TT'I` l `L` t') ("
+ `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper
+ `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper_variables
+ `lo____'yp` Some `hu____` World `ha` print `hv`  ") =>\n"
+ `lo____'yp` Some `hu____` World `ha` print `hv`  " (forall e . Wrapper into ("
+ `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper
+ `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper_variables
+ `lo____'yp` Some `hu____` World `ha` print `hv`  " `T'TT'I` l `L` t' `T'I_` e)) =>\n"
+
+-- TODO: I would not need this function if I would have `yiokl'yiokl` operator:
+render_source_kleisli_functor_constraint_optionally (These p (These v k)) =
+ k `yukl` Check `ha` World `ha` render_source_kleisli_functor_constraint `hv__` p `lu` v
+
+render_functor_constraint prefix =
+ Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
  `lo____'yp` World `ha___` that @Morphism `ho` this @Variance `ho` render_variance
  `lo____'yp` Some `hu____` World `ha` print `hv___` Yonedaic `hu` " Yoneda" `la` Ordinary `hu` " Endo Semi" `li` prefix
  `lo____'yp` Some `hu____` World `ha` print `hv` " Functor from"
@@ -137,9 +165,16 @@ render_functor_constraint prefix = Some `hu_` output `ha` Glyph `ha` Symbol `ha`
  `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper
  `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper_variables
  `lo____'yp` Some `hu____` World `ha` print `hv`  ") => \n"
+ `lo____'yp` World `ha___` render_source_kleisli_functor_constraint_optionally
  `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper_constraint (Yonedaic `hu` "into" `la` Ordinary `hu` "from" `li`  prefix)
 
 -- TODO: this code is terrible! I should rewrite it ASAP.
+
+render_morphism layers = is
+ `li` Some `hu` " -> into (from (a) (l `L` t' `T'I` o))"
+ `la` Some `hu` " -> into (from (a) (o))"
+ `li` calculate_deviation layers
+ `yi` print
 
 render (These (These namespace functorial) layers@(calculate_variance -> variance)) = enter @World
  `yuk_____` World `hv_____` output `ha` Caret `ha` Newline `hv` Unit
@@ -147,7 +182,7 @@ render (These (These namespace functorial) layers@(calculate_variance -> varianc
  `yuk_____` World `hv_____` is @(List ASCII) `hv` " :: forall from into" `yokl` Forth `ha` World `ha` output
  `yuk_____` World `hv_____` namespace `yi` at `ho` this @(Counter Parametric) `ho'he` pop `ho` that `ho` render_universal_variables T
  `yuk_____` World `hv_____` namespace `yi` at `ho` this @(Counter Positioned) `ho'he` pop `ho` that `ho` render_universal_variables I
- `yuk_____` World `hv_____` print " a o ."
+ `yuk_____` World `hv_____` print " t' l a o ."
  `yuk_____` World `hv_____` output `ha` Caret `hv` by Newline
  -- TODO: I don't like the fact that `layers` is a `List` - it should be a `Nonempty List` (or we should iterate over `Scrolling Tree` instead)
  `yuk_____` World `hv______` Some `hu__` print "Impossible happened!" `yu` Unit
@@ -160,7 +195,8 @@ render (These (These namespace functorial) layers@(calculate_variance -> varianc
  `yuk_____` World `hv_____` print ") => \n"
  `yuk_____` World `hv_____` print " (forall e ee . Wrapper into (T'I'II from e ee)) => \n"
  `yuk_____` World `hv_____` render_target (not variance) functorial
- `yuk_____` World `hv_____` print " -> into (from a o)"
+ -- `yuk_____` World `hv_____` print " -> into (from (a) (o))"
+ `yuk_____` World `hv_____` render_morphism layers
  `yuk_____` World `hv_____` render_target variance functorial
  `yuk_____` World `hv_____` output `ha` Caret `hv` by Newline
  `yuk_____` World `hv_____` print `ha` tokens `hv` layers

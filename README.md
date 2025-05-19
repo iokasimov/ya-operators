@@ -4,7 +4,7 @@
 
 - [x] Generate complete valid operators code
 - [x] Source and target categories should be different
-- [ ] Generate operators with source Kleisli morphisms
+- [x] Generate operators with source Kleisli morphisms
 - [ ] Generate operators with target Kleisli morphisms
 - [ ] Generate longer versions of the same definition
 - [ ] Generate Hom functor aliases
