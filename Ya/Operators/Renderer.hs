@@ -18,8 +18,6 @@ calculate_deviation layers = layers
  `ha__` Continue `la` Interrupt 
  `ha__` that @Morphism `ho` that @Deviation
 
--- TODO: how can we can quickly understand, if we return previous state or only a new one? Using some labels/constructors?
-
 render_wrapper x = Some `hu_` State `ha` Event `ha` push @List `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
  `lo_'yp` New `ha` render_position `ha` this @(Singular `T'I` Name) `ha` focus
  `lo_'yp` Empty @List `hu_` New `ha` intro `ha` Glyph `ha` Letter `ha` Upper `hv` by E
@@ -46,14 +44,6 @@ render_separate_variable = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctua
 
 pattern Yonedaic e = This e
 pattern Ordinary e = That e
-
--- render_yoneda_functor_constraint = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
- -- `lo____'yp` World `ha___` that @Variance `ho` render_variance
- -- `lo____'yp` Some `hu____` World `ha` print `hv` " Yoneda Functor from into ("
- -- `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper
- -- `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper_variables
- -- `lo____'yp` Some `hu____` World `ha` print `hv`  ") => \n"
- -- `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper_constraint
 
 render_wrapper_constraint cat x = Some `hu` render_wrapper_constraint' cat x `ho'yu` Unit
   `la_` Some `hu` enter @World
@@ -195,7 +185,6 @@ render (These (These namespace functorial) layers@(calculate_variance -> varianc
  `yuk_____` World `hv_____` print ") => \n"
  `yuk_____` World `hv_____` print " (forall e ee . Wrapper into (T'I'II from e ee)) => \n"
  `yuk_____` World `hv_____` render_target (not variance) functorial
- -- `yuk_____` World `hv_____` print " -> into (from (a) (o))"
  `yuk_____` World `hv_____` render_morphism layers
  `yuk_____` World `hv_____` render_target variance functorial
  `yuk_____` World `hv_____` output `ha` Caret `hv` by Newline

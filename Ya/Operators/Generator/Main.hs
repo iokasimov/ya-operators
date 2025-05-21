@@ -54,19 +54,21 @@ genesis templates = templates
 main = enter @World
  `yuk___` World `hv____` determinant `yi` genesis
   `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
-
- -- `yuk___` World `hv____` genesis
- --  `yok_` Plane `ha` combinations determinant
- --  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
-
- -- `yuk___` World `hv____` (arrangements `yo` flattened)
- --  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
- --  `yok_` Plane `ha` combinations (arrangements `yo` flattened)
- --  `yok_` Plane `ha` combinations (arrangements `yo` flattened)
- --  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
- -- `yuk___` World `hv____` (arrangements `yo` flattened)
- --  `yo` intro @(Nonempty List) `ho` intro @(Nonempty List)
- --  `yok_` Plane `ha` combinations (arrangements `yo` flattened)
- --  `yok_` Plane `ha` combinations (arrangements `yo` flattened)
- --  `yok_` Plane `ha` combinations (arrangements `yo` flattened)
- --  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
+ `yuk___` World `hv____` elementary `yi` genesis
+  `yok_` Plane `ha` combinations determinant
+  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
+ `yuk___` World `hv____` elementary `yi` genesis
+  `yok_` Plane `ha` combinations elementary
+  `yok_` Plane `ha` combinations determinant
+  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
+ `yuk___` World `hv____` elementary `yi` genesis
+  `yok_` Plane `ha` combinations elementary
+  `yok_` Plane `ha` combinations elementary
+  `yok_` Plane `ha` combinations determinant
+  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
+ `yuk___` World `hv____` elementary `yi` genesis
+  `yok_` Plane `ha` combinations elementary
+  `yok_` Plane `ha` combinations elementary
+  `yok_` Plane `ha` combinations elementary
+  `yok_` Plane `ha` combinations determinant
+  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
