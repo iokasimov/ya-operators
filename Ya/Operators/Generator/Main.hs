@@ -51,7 +51,7 @@ genesis templates = templates
  `yo` intro @(Nonempty List)
  `ho` intro @(Nonempty List)
 
-main = enter @World
+main = intro @World `hv` Unit
  `yuk___` World `hv____` determinant `yi` genesis
   `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
  `yuk___` World `hv____` elementary `yi` genesis

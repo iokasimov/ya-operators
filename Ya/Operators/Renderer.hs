@@ -46,7 +46,7 @@ pattern Yonedaic e = This e
 pattern Ordinary e = That e
 
 render_wrapper_constraint cat x = Some `hu` render_wrapper_constraint' cat x `ho'yu` Unit
-  `la_` Some `hu` enter @World
+  `la_` Some `hu` intro @World Unit
  `ha__` other `ho` this @(Shafted List Name) `ho` (`hd'q` empty) `hv__` x
 
 render_wrapper_constraint' cat = Some `hu` print " (forall e . Wrapper "
@@ -62,7 +62,7 @@ render_target variance = Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate
  `lo__'yp` World `ha` render_target_subtree variance `ha` this @(List `T'I` Tree Name) `ha` sub @Tree
  `lo__'yp` Some `hu_` World `ha` output `ha` Glyph `ha` Symbol `ha` Bracket `ha` Closed `hv` Round
 
-render_target_subtree variance subtree = Empty @List `hu` enter @World
+render_target_subtree variance subtree = Empty @List `hu` intro @World Unit
  `la` Same `hu` (subtree `yokl` Forth `ha` World `ha` render_target variance) `ho'yu` Unit
  `li` unwrap @(AR) @(List _) subtree
 
@@ -87,7 +87,7 @@ render_remaining_functors tokens = tokens
  `ha__` render_remaining_functor_token
  `yuk_` New `hv` ("fai (identity @(AR)" `yi` is @(List ASCII) `yokl` Prior `ha` New `ha` State `ha` Event `ha` push)
 
-render_remaining_functor_token x = enter @(State `T'I` List ASCII)
+render_remaining_functor_token x = intro @(State `T'I` List ASCII) `hv` Unit
  `yuk____` New `hv____` " @from" `yi` is @(List ASCII) `yokl` Prior `ha` New `ha` State `ha` Event `ha` push
  `yuk____` New `hv____` x `yokl` Prior `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower
  `yuk____` New `hv____` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `ha` F `hv` Unit
@@ -166,7 +166,7 @@ render_morphism layers = is
  `li` calculate_deviation layers
  `yi` print
 
-render (These (These namespace functorial) layers@(calculate_variance -> variance)) = enter @World
+render (These (These namespace functorial) layers@(calculate_variance -> variance)) = intro @World `hv` Unit
  `yuk_____` World `hv_____` output `ha` Caret `ha` Newline `hv` Unit
  `yuk_____` World `hv_____` print `ha` tokens `hv` layers
  `yuk_____` World `hv_____` is @(List ASCII) `hv` " :: forall from into" `yokl` Forth `ha` World `ha` output
