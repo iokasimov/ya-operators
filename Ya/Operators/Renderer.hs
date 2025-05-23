@@ -130,14 +130,14 @@ print x = x `yi` is @(List ASCII) `yokl` Forth `ha` World `ha` output
 render_source_kleisli_functor_constraint =
  Some `hu_` output `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
  `lo____'yp` World `ha___` that @Variance `ho` render_variance
- `lo____'yp` Some `hu____` World `ha` print `hv` " Endo Transformation Functor into (("
+ `lo____'yp` Some `hu____` World `ha` print `hv` " Endo Transformation Functor from (("
  `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper
  `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper_variables
  `lo____'yp` Some `hu____` World `ha` print `hv`  ") `T'TT'I` l `L` t') ("
  `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper
  `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper_variables
  `lo____'yp` Some `hu____` World `ha` print `hv`  ") =>\n"
- `lo____'yp` Some `hu____` World `ha` print `hv`  " (forall e . Wrapper into ("
+ `lo____'yp` Some `hu____` World `ha` print `hv`  " (forall e . Wrapper from ("
  `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper
  `lo____'yp` World `ha___` this @(Position Name) `ho` render_wrapper_variables
  `lo____'yp` Some `hu____` World `ha` print `hv`  " `T'TT'I` l `L` t' `T'I_` e)) =>\n"
@@ -183,7 +183,12 @@ render (These (These namespace functorial) layers@(calculate_variance -> varianc
  `yuk_____` World `hv_____` print " Contravariant Endo Semi Functor (->) (T'II'I into"
  `yuk_____` World `hv_____` render_target variance functorial
  `yuk_____` World `hv_____` print ") => \n"
- `yuk_____` World `hv_____` print " (forall e ee . Wrapper into (T'I'II from e ee)) => \n"
+ `yuk_____` World `hv_____` print " (forall e ee . Wrapper into (" 
+ `yuk_____` World `hv_____` Some `hu__` print "Impossible happened!"
+    `la___` print `ha__` Contra `hu` "T'II'I" `la` Co `hu` "T'I'II" 
+     `ha__` this @Variance `ha` that @Morphism `ha` this `ha` top @(Nonempty List)
+    `li___` layers
+ `yuk_____` World `hv_____` print " from e ee)) => \n"
  `yuk_____` World `hv_____` render_target (not variance) functorial
  `yuk_____` World `hv_____` render_morphism layers
  `yuk_____` World `hv_____` render_target variance functorial
