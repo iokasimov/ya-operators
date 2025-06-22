@@ -15,12 +15,12 @@ calculate_variance layers = layers
 
 calculate_deviation layers = layers
  `yokl` Prior `ha` Check
- `ha__` Continue `la` Interrupt 
+ `ha__` Continue `la` Interrupt
  `ha__` that @Morphism `ho` that @Deviation
 
 render_wrapper x = Some `hu_` State `ha` Event `ha` push @List `ha` Glyph `ha` Symbol `ha` Punctuate `hv` by Space
  `lo_'yp` New `ha` render_position `ha` this @(Singular `T'I` Name) `ha` focus
- `lo_'yp` Empty @List `hu_` New `ha` intro `ha` Glyph `ha` Letter `ha` Upper `hv` by E
+ `lo_'yp` Empty @List `hu_` New `ha` intro @_ @AR `ha` Glyph `ha` Letter `ha` Upper `hv` by E
     `la` New `ha` render_position `ha` is @(Nonempty List _)
    `ha_` to @List `ha` this @(Shafted List `T'I` Name) `ha` other
  `lo_'yp` Some `hu_` New `ha` State `ha` Event `ha` push @List `ha` Glyph `ha` Letter `ha` Upper `hv` by T
@@ -46,8 +46,8 @@ pattern Yonedaic e = This e
 pattern Ordinary e = That e
 
 render_wrapper_constraint cat x = Some `hu` render_wrapper_constraint' cat x `ho'yu` Unit
-  `la_` Some `hu` intro @World Unit
- `ha__` other `ho` this @(Shafted List Name) `ho` (`hd'q` empty) `hv__` x
+ `la_` Some `hu` intro @World Unit
+ `ha__` other `ho` this @(Shafted List Name) `ho` (`lu'q` empty) `hv__` x
 
 render_wrapper_constraint' cat = Some `hu` print " (forall e . Wrapper "
  `lo____'yp` Some `hu_` World `hv` print cat
@@ -70,8 +70,8 @@ render_variable x = x `yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter
 
 -- TODO: This conditional is not elegant and error prone, we do it because we loose `Position` structure due to convertation to `Tree`
 render_target_variable variance x = that @Name
- `la` Some `hu` prepare_variance_target variance
- `li` [by E] `hd'q` x
+ `la_` Some `hu` prepare_variance_target variance
+ `li_` [by E] `lu'q` x
  `yokl` Forth `ha` World `ha` output `ha` Glyph `ha` Letter `ha` Lower
 
 prepare_variance_target = Some `hu` [by A] `la` Some `hu` [by O]
@@ -92,6 +92,7 @@ render_remaining_functor_token x = intro @(State `T'I` List ASCII) `hv` Unit
  `yuk____` New `hv____` x `yokl` Prior `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower
  `yuk____` New `hv____` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `ha` F `hv` Unit
 
+-- TODO: rewrite using `s` operator!
 render_definition layers = let These popped remains = layers `yo` tokenize `yi` pop in
  popped `yokl'yokl` Check `ha` Prior `ha` New `ha` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower
  `yuk_____` New `hv____` State `ha` Event `ha` push `ha` Glyph `ha` Letter `ha` Lower `hv` by Y
@@ -109,10 +110,7 @@ tokenize (These p (These v k)) = is
 maybe_source_kleisli kleisli x =
  None `hu` x `la` Some `hu` source_kleisli x `li` kleisli
 
-source_kleisli x = x
- `yokl` Prior `ha` New `ha` State `ha` Event `ha` push
- `he'he'hv___` intro `hv` by K
- `yi__` that @Name
+source_kleisli x = x `lu's` intro @(Nonempty List) `hv` K Unit
 
 variant = Contra `hu` by A `la` Co `hu` by O `ha__` is @Variance
 

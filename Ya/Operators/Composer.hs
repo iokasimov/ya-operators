@@ -19,7 +19,7 @@ type Morphism = Variance `P` Deviation
 
 type Position = Scrolling List
 
-compare current result = Some `hu` by Contra `la` Some `hu` by Co `li` current `hd'q` result
+compare current result = Some `hu` by Contra `la` Some `hu` by Co `li_` current `lu'q` result
 
 type Name = Nonempty List Latin
 

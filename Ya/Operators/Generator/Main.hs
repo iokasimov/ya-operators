@@ -9,18 +9,10 @@ import Ya.Operators.Renderer
 
 arguments = is @(Nonempty List Arity) ["#", "##"]
 
-arrangements = arguments
- `yok_` Plane `ha` positions
- `yok_` Plane `ha` variances
-
-positions arity = arity
- `kyo` Range @(Position Unit)
-
 variances = to @(Nonempty List)
  `ha__` Both @(P) @(Position Unit `P` Variance)
  `ha__` (`lu` Contra Unit)
    `lo` (`lu` Co Unit)
- `ha__` is @(Position Unit)
 
 deviation = to @(Nonempty List)
  `ha__` Both @(P) @(Position Unit `P` Morphism)
@@ -29,12 +21,6 @@ deviation = to @(Nonempty List)
  `ha__` is @(Position Unit `P` Variance)
 
 flattened x = x `yio` is @Variance `ho` (`lu` by Flat)
-
-combinations affix template =
- affix `lu` Cross `hv` template
- `yp'yo'hd` push @(Nonempty List)
- `ho'ho` that @(Nonempty List _)
- `ho'ho` intro @(Nonempty List)
 
 operator template = template
  `yokl` Forth `ha` New `ha` layer
@@ -48,27 +34,40 @@ determinant = arrangements
  `yok` Plane `ha` deviation
 
 genesis templates = templates
- `yo` intro @(Nonempty List)
- `ho` intro @(Nonempty List)
+ `yo` intro @(Nonempty List) @(AR)
+ `ho` intro @(Nonempty List) @(AR)
+
+arrangements = arguments
+ `yok_` Plane `ha` positions
+ `yok_` Plane `ha` variances
+
+positions arity = arity
+ `kyo` Range @(Position Unit)
+
+combinations affix template =
+ affix `lu` Cross `hv` template
+ `yp'yo'hd` push @(Nonempty List)
+ `ho'ho` that @(Nonempty List _)
+ `ho'ho` intro @(Nonempty List) @(AR)
 
 main = intro @World `hv` Unit
  `yuk___` World `hv____` determinant `yi` genesis
   `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
- `yuk___` World `hv____` elementary `yi` genesis
-  `yok_` Plane `ha` combinations determinant
-  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
- `yuk___` World `hv____` elementary `yi` genesis
-  `yok_` Plane `ha` combinations elementary
-  `yok_` Plane `ha` combinations determinant
-  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
- `yuk___` World `hv____` elementary `yi` genesis
-  `yok_` Plane `ha` combinations elementary
-  `yok_` Plane `ha` combinations elementary
-  `yok_` Plane `ha` combinations determinant
-  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
- `yuk___` World `hv____` elementary `yi` genesis
-  `yok_` Plane `ha` combinations elementary
-  `yok_` Plane `ha` combinations elementary
-  `yok_` Plane `ha` combinations elementary
-  `yok_` Plane `ha` combinations determinant
-  `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
+ -- `yuk___` World `hv____` elementary `yi` genesis
+  -- `yok_` Plane `ha` combinations determinant
+  -- `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
+ -- `yuk___` World `hv____` elementary `yi` genesis
+  -- `yok_` Plane `ha` combinations elementary
+  -- `yok_` Plane `ha` combinations determinant
+  -- `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
+ -- `yuk___` World `hv____` elementary `yi` genesis
+  -- `yok_` Plane `ha` combinations elementary
+  -- `yok_` Plane `ha` combinations elementary
+  -- `yok_` Plane `ha` combinations determinant
+  -- `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
+ -- `yuk___` World `hv____` elementary `yi` genesis
+  -- `yok_` Plane `ha` combinations elementary
+  -- `yok_` Plane `ha` combinations elementary
+  -- `yok_` Plane `ha` combinations elementary
+  -- `yok_` Plane `ha` combinations determinant
+  -- `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
