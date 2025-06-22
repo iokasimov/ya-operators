@@ -51,11 +51,9 @@ combinations affix template =
  `ho'ho` intro @(Nonempty List) @(AR)
 
 main = intro @World `hv` Unit
- `yuk___` World `hv____` determinant `yi` genesis
+ `yuk___` World `hv____` elementary `yi` genesis
+  `yok_` Plane `ha` combinations determinant
   `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
- -- `yuk___` World `hv____` elementary `yi` genesis
-  -- `yok_` Plane `ha` combinations determinant
-  -- `yokl'yokl` Forth `ha` Forth `ha` Await `ha` operator
  -- `yuk___` World `hv____` elementary `yi` genesis
   -- `yok_` Plane `ha` combinations elementary
   -- `yok_` Plane `ha` combinations determinant
