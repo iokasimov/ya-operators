@@ -30,7 +30,7 @@ fill symbol counter = counter `yo` symbol `lu_` push Unit `ho` that `hv` counter
 
 data Variable = Parametric | Positioned
 
-type Counter label = label `L` Nonempty List `T'I` Unit
+type Counter label = Nonempty List `L` label `T` Unit
 
 type Namespace = Counter Positioned `P` Counter Parametric
 
@@ -44,6 +44,3 @@ layer x = intro @(State `T'I` Namespace `P` Tree Name `P` List Layer) `hv` Unit
  `lo____'yp` New `ha` State `ha___` Event `ha_` wrap @(AR) `ho` (`lu` that @Morphism `hv` x) `ho` push @List `ho_'ha` Scope `hv` at @(List Layer)
 
 variable symbol attr = quant symbol `ha` this `ha` attr `ho'he'he` is
-
--- `lo'lu`
--- `lu'lo`
