@@ -42,7 +42,7 @@ arrangements = arguments
  `yok_` Plane `ha` variances
 
 positions arity = arity
- `kyo` Range @(Position Unit)
+ `kyo` Range @Position
 
 combinations affix template =
  affix `lu` Cross `hv` template

@@ -78,7 +78,7 @@ prepare_variance_target = Some `hu` [by A] `la` Some `hu` [by O]
 
 render_universal_variables symbol x = x
  `yi` is @(Nonempty List Unit)
- `kyo` Range @(Nonempty List Latin) `ha'yo` (symbol :: Unit `AR` Latin) `ha` is @(Nonempty List Unit)
+ `kyo` Range @(Nonempty List) `ha'yo` (symbol :: Unit `AR` Latin) `ha` is @(Nonempty List Unit)
  `yokl` Prior `ha` World `ha` render_separate_variable
 
 render_remaining_functors tokens = tokens
