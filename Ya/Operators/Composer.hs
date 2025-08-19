@@ -30,7 +30,7 @@ fill symbol counter = counter `yo` symbol `lu_` push Unit `ho` that `hv` counter
 
 data Variable = Parametric | Positioned
 
-type Counter label = Nonempty List `L` label `T` Unit
+type Counter label = Nonempty List `L` Nonempty List `T` label `T` Unit
 
 type Namespace = Counter Positioned `P` Counter Parametric
 
